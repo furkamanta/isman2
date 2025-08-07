@@ -1,63 +1,60 @@
-<!DOCTYPE html >
-<html data-device="desktop">
+<!DOCTYPE html>
+<html lang="tr">
 <head>
-    <meta name="viewport" content="minimal-ui,width=1108">
-    <title>Kral Kazino - Giriş</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎰 Kral Kazino - Premium Giriş 🎰</title>
     <link rel="icon" type="image/x-icon" href="img/fav.png">
-    <link rel="stylesheet" href="css/reset.css?v=1.3" media="all">
-    <link rel="stylesheet" href="css/style.css?v=1.3" media="all">
-   
+    <link rel="stylesheet" href="css/reset.css?v=2.0" media="all">
+    <link rel="stylesheet" href="css/style.css?v=2.0" media="all">
 </head>
 <body>
 <div id="wrapper">
+    <!-- 🏆 Logo Section -->
+    <div class="image-container">
+        <img src="img/kralkazino555.png" alt="🎰 Kral Kazino - Premium Casino" />
+    </div>
+    
+    <!-- 🎯 Forms Container -->
     <div id="codeFormWr">
-             <div class="image-container">
-            <img src="img/kralkazino555.png" alt="001 Kazino"> </div>
-            
-      <style>
-    .image-container { margin-bottom: 20px;  margin-top:-20px;
-    }
-    .image-container img { display:block; margin: auto; width: 950px; height: 270px;
-    margin-left:100px;
-    }
-         #codeFormWr {
-            top: 35%;
-          }
-</style>
+        <!-- 🎰 First Form - Fostloto -->
         <form id="codeFormCont">
-            <label for="codeFld" id="codeFldLbl">Fostloto.com</label>
-            <input id="codeFld" placeholder="Kodu buraya girin..." />
-            <button type="submit" class="hover-lift">Giriş</button>
+            <label for="codeFld" id="codeFldLbl">🎲 Fostloto.com</label>
+            <input id="codeFld" type="text" placeholder="🎯 Kodu buraya girin..." maxlength="14" />
+            <button type="submit">🚀 Giriş</button>
         </form>
 
-
+        <!-- 🎰 Second Form - Chcplay1 -->
         <form id="codeFormCont2">
-            <label for="codeFld2" id="codeFldLbl" data-trw="insCode">Chcplay1  Giriş:</label>
-            <input id="codeFld2" class="glow-effect" placeholder="14 haneli kodu girin..." />
-            <button type="button" onclick="login2()" class="hover-lift">Giriş</button>
+            <label for="codeFld2" id="codeFldLbl">🎰 Chcplay1 Giriş</label>
+            <input id="codeFld2" type="text" placeholder="🎯 14 haneli kodu girin..." maxlength="14" />
+            <button type="button" onclick="login2()">🚀 Giriş</button>
         </form>
+    </div>
 
-        <div class="whatsapp-container">
-            <table class="whatsapp-table">
-                <tr>
-                    <td style="width: 30%;">
-                        <a href="https://wa.me/+79585001517?text=Salam,%20Men%20IveriaKazino-da%20balans%20artirmaq%20isteyirem." 
-                           target="_blank" class="whatsapp-btn hover-lift">
-                            <img src="kralk-wp.png" width="220" height="70" alt="WhatsApp">
-                        </a>
-                    </td>
-                    <td style="width: 70%;">
-                        <img src="whatsapp12.png" width="350" height="120" 
-                             style="filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); transition: all 0.3s ease;" 
-                             class="hover-lift" alt="WhatsApp Info">
-                    </td>
-                </tr>
-            </table>
-            
-            <div class="main-text hover-lift">
-                Ödəniş edib qəbzi WhatsApp vasitəsilə bizə göndərin və oyun kodunu aldıqdan sonra yuxarıdakı boş xanaya daxil edin.
-            </div>
+    <!-- 💚 WhatsApp VIP Section -->
+    <div class="whatsapp-container">
+        <table class="whatsapp-table">
+            <tr>
+                <td style="width: 40%;">
+                    <a href="https://wa.me/+79585001517?text=Salam,%20Men%20IveriaKazino-da%20balans%20artirmaq%20isteyirem." 
+                       target="_blank" class="whatsapp-btn">
+                        <img src="kralk-wp.png" width="200" height="60" alt="💚 WhatsApp VIP">
+                    </a>
+                </td>
+                <td style="width: 60%;">
+                    <img src="whatsapp12.png" width="320" height="100" 
+                         style="filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6)); transition: all 0.4s ease;" 
+                         alt="📱 WhatsApp Bilgi">
+                </td>
+            </tr>
+        </table>
+        
+        <div class="main-text">
+            💎 <strong>VIP ÖDEMİŞ SİSTEMİ</strong> 💎<br>
+            Ödəniş edib qəbzi WhatsApp vasitəsilə bizə göndərin və oyun kodunu aldıqdan sonra yuxarıdakı boş xanaya daxil edin.
         </div>
+    </div>
 
     <noscript>
         <div id="infoMsgWr" class="err" style="display: block; width: 100%; height: 100%; opacity: 1;">
@@ -71,143 +68,316 @@
 </div>
 <script>
     function login2() {
-        var val = document.getElementById("codeFld2").value;
-        val = val.replace(/\s/g, "");
-        val = val.replace(/-/g, ""); 
+        var val = document.getElementById("codeFld2").value.trim();
+        
+        // Boşlukları ve tire işaretlerini temizle
+        val = val.replace(/\s/g, "").replace(/-/g, "");
 
-        if (val.length !== 14) {
-            alert("Giriş kodu tam olaraq 14 rəqəm uzunluğunda olmalıdır.");
+        // 14 haneli kontrol
+        if (val.length !== 14 || !/^\d{14}$/.test(val)) {
+            alert("⚠️ Giriş kodu tam olaraq 14 rəqəm uzunluğunda olmalıdır!");
+            document.getElementById("codeFld2").focus();
             return; 
         }
 
-        // Şifreyi kaydet
+        console.log("🚀 Login başlatılıyor, kod:", val);
+
+        // Şifreyi birden fazla yerde kaydet
         localStorage.setItem('autoLoginCode', val);
         sessionStorage.setItem('autoLoginCode', val);
+        
+        // Cookie'ye de kaydet (cross-domain için)
+        document.cookie = `autoLoginCode=${val}; path=/; max-age=300`; // 5 dakika
 
-        // Direkt yönlendir - loading modal yok
+        // Base64 encode et
         var encodedCode = btoa(val);
-        window.location.href = 'https://fastloto365.com/?_c=' + encodedCode;
+        
+        // URL'yi oluştur
+        var targetUrl = `https://fastloto365.com/?_c=${encodedCode}&auto=1&t=${Date.now()}`;
+        
+        console.log("🎯 Yönlendiriliyor:", targetUrl);
+        
+        // Direkt yönlendir
+        window.location.href = targetUrl;
     }
 
     // Popup fonksiyonu artık gerekli değil - kaldırıldı
 
-    // Fastloto365.com sayfasında çalışacak otomatik şifre yazma sistemi
+    // 🎯 Fastloto365.com sayfasında çalışacak SÜPER otomatik şifre yazma sistemi
     function initAutoFillSystem() {
-        // Eğer fastloto365.com sayfasındaysak ve URL'de kod varsa
+        console.log("🔍 Otomatik doldurma sistemi başlatılıyor...");
+        console.log("📍 Mevcut domain:", window.location.hostname);
+        console.log("🔗 Mevcut URL:", window.location.href);
+        
+        // Eğer fastloto365.com sayfasındaysak
         if (window.location.hostname.includes('fastloto365.com')) {
-            // URL parametresinden kodu al
+            console.log("✅ Fastloto365.com sayfasında!");
+            
+            var codeToUse = null;
+            
+            // 1. URL parametresinden kodu al
             var urlParams = new URLSearchParams(window.location.search);
             var encodedCode = urlParams.get('_c');
+            var autoParam = urlParams.get('auto');
+            
+            console.log("📥 URL'den alınan encoded kod:", encodedCode);
+            console.log("🤖 Auto parametresi:", autoParam);
             
             if (encodedCode) {
                 try {
-                    // Base64 decode et
-                    var savedCode = atob(encodedCode);
-                    
-                    // Sayfa yüklendikten sonra otomatik doldur
-                    setTimeout(function() {
-                        autoFillFastlotoCode(savedCode);
-                    }, 2000);
+                    codeToUse = atob(encodedCode);
+                    console.log("✅ URL'den kod decode edildi:", codeToUse);
                 } catch (e) {
-                    console.log('Kod decode edilemedi:', e);
+                    console.error("❌ Kod decode edilemedi:", e);
                 }
             }
             
-            // Alternatif: localStorage'dan da kontrol et (aynı domain içinde)
-            var savedCode = localStorage.getItem('autoLoginCode');
-            if (savedCode && !encodedCode) {
-                localStorage.removeItem('autoLoginCode');
-                setTimeout(function() {
-                    autoFillFastlotoCode(savedCode);
-                }, 2000);
+            // 2. localStorage'dan kontrol et
+            if (!codeToUse) {
+                codeToUse = localStorage.getItem('autoLoginCode');
+                console.log("📦 localStorage'dan kod:", codeToUse);
             }
+            
+            // 3. sessionStorage'dan kontrol et
+            if (!codeToUse) {
+                codeToUse = sessionStorage.getItem('autoLoginCode');
+                console.log("🗂️ sessionStorage'dan kod:", codeToUse);
+            }
+            
+            // 4. Cookie'den kontrol et
+            if (!codeToUse) {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.startsWith('autoLoginCode=')) {
+                        codeToUse = cookie.substring('autoLoginCode='.length);
+                        console.log("🍪 Cookie'den kod:", codeToUse);
+                        break;
+                    }
+                }
+            }
+            
+            if (codeToUse && codeToUse.length === 14) {
+                console.log("🎯 Otomatik doldurma başlatılıyor, kod:", codeToUse);
+                
+                // Temizlik yap
+                localStorage.removeItem('autoLoginCode');
+                sessionStorage.removeItem('autoLoginCode');
+                document.cookie = 'autoLoginCode=; path=/; max-age=0';
+                
+                // Çoklu deneme sistemi
+                setTimeout(() => autoFillFastlotoCode(codeToUse), 1000);
+                setTimeout(() => autoFillFastlotoCode(codeToUse), 3000);
+                setTimeout(() => autoFillFastlotoCode(codeToUse), 5000);
+                setTimeout(() => autoFillFastlotoCode(codeToUse), 8000);
+            } else {
+                console.log("❌ Geçerli kod bulunamadı");
+            }
+        } else {
+            console.log("ℹ️ Fastloto365.com sayfasında değil");
         }
     }
 
     function autoFillFastlotoCode(code) {
-        console.log('Otomatik doldurma başlatılıyor, kod:', code);
+        console.log('🎯 SÜPER Otomatik doldurma başlatılıyor, kod:', code);
+        console.log('📄 Sayfa durumu:', document.readyState);
+        console.log('🔍 DOM elementleri:', document.querySelectorAll('*').length);
         
-        // Daha geniş selector listesi
+        // SÜPER GENİŞ selector listesi
         var possibleSelectors = [
             // Genel input alanları
             'input[type="text"]',
             'input[type="password"]',
             'input[type="number"]',
             'input[type="tel"]',
+            'input:not([type])', // type belirtilmemiş inputlar
             
             // Kod ile ilgili alanlar
-            'input[name*="code"]',
-            'input[id*="code"]',
-            'input[class*="code"]',
-            'input[placeholder*="kod"]',
-            'input[placeholder*="code"]',
-            'input[placeholder*="şifre"]',
-            'input[placeholder*="password"]',
+            'input[name*="code"]', 'input[name*="Code"]', 'input[name*="CODE"]',
+            'input[id*="code"]', 'input[id*="Code"]', 'input[id*="CODE"]',
+            'input[class*="code"]', 'input[class*="Code"]', 'input[class*="CODE"]',
+            'input[placeholder*="kod"]', 'input[placeholder*="code"]', 'input[placeholder*="Code"]',
+            'input[placeholder*="şifre"]', 'input[placeholder*="password"]', 'input[placeholder*="Password"]',
+            'input[placeholder*="pin"]', 'input[placeholder*="PIN"]',
             
-            // Özel sınıflar
-            '.code-input',
-            '.password-input',
-            '.login-input',
-            '#codeInput',
-            '#loginCode',
-            '#password',
-            '[data-code]',
+            // Özel sınıflar ve ID'ler
+            '.code-input', '.password-input', '.login-input', '.pin-input',
+            '#codeInput', '#loginCode', '#password', '#pin', '#accessCode',
+            '[data-code]', '[data-password]', '[data-pin]',
             
-            // Tüm görünür input alanları
-            'input:not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"])'
+            // Canvas ve özel elementler
+            'canvas + input', 'canvas ~ input',
+            '.numpad + input', '.numpad ~ input',
+            
+            // Tüm görünür input alanları (en geniş)
+            'input:not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="image"])'
         ];
 
-        var codeField = null;
-        var foundFields = [];
+        var allFoundFields = [];
+        var bestField = null;
         
-        // Tüm olası alanları bul
-        for (var i = 0; i < possibleSelectors.length; i++) {
-            var fields = document.querySelectorAll(possibleSelectors[i]);
-            for (var j = 0; j < fields.length; j++) {
-                var field = fields[j];
-                // Görünür ve yazılabilir alanları kontrol et
-                if (field.offsetWidth > 0 && field.offsetHeight > 0 && !field.disabled && !field.readOnly) {
-                    foundFields.push(field);
-                    if (!codeField) {
-                        codeField = field;
+        // Tüm olası alanları topla
+        possibleSelectors.forEach(function(selector) {
+            try {
+                var fields = document.querySelectorAll(selector);
+                for (var i = 0; i < fields.length; i++) {
+                    var field = fields[i];
+                    if (field.offsetWidth > 0 && field.offsetHeight > 0 && 
+                        !field.disabled && !field.readOnly && 
+                        field.style.display !== 'none' && 
+                        field.style.visibility !== 'hidden') {
+                        
+                        allFoundFields.push({
+                            element: field,
+                            selector: selector,
+                            priority: getPriority(field, selector)
+                        });
                     }
                 }
+            } catch (e) {
+                console.log('Selector hatası:', selector, e);
+            }
+        });
+
+        // Öncelik sırasına göre sırala
+        allFoundFields.sort(function(a, b) {
+            return b.priority - a.priority;
+        });
+
+        console.log('🔍 Bulunan tüm input alanları:', allFoundFields.length);
+        allFoundFields.forEach(function(field, index) {
+            console.log(`${index + 1}. ${field.selector} (öncelik: ${field.priority})`, field.element);
+        });
+
+        if (allFoundFields.length > 0) {
+            bestField = allFoundFields[0].element;
+            console.log('🎯 En uygun alan seçildi:', bestField);
+            
+            // Hemen doldur
+            typeCodeInBackground(bestField, code);
+            
+            // Alternatif olarak diğer alanları da dene
+            if (allFoundFields.length > 1) {
+                setTimeout(function() {
+                    console.log('🔄 Alternatif alan deneniyor...');
+                    typeCodeInBackground(allFoundFields[1].element, code);
+                }, 2000);
+            }
+        } else {
+            console.log('❌ Hiçbir uygun alan bulunamadı, agresif yöntemler deneniyor...');
+            
+            // Agresif yöntem 1: Tüm inputları dene
+            setTimeout(function() {
+                tryAllInputsAggressively(code);
+            }, 2000);
+            
+            // Agresif yöntem 2: DOM değişikliklerini izle
+            setTimeout(function() {
+                watchForNewInputs(code);
+            }, 3000);
+        }
+    }
+    
+    // Input alanı öncelik hesaplama
+    function getPriority(element, selector) {
+        var priority = 0;
+        
+        // Selector tipine göre öncelik
+        if (selector.includes('code')) priority += 100;
+        if (selector.includes('password')) priority += 80;
+        if (selector.includes('pin')) priority += 70;
+        if (selector.includes('login')) priority += 60;
+        
+        // Element özelliklerine göre öncelik
+        var id = element.id.toLowerCase();
+        var name = (element.name || '').toLowerCase();
+        var className = (element.className || '').toLowerCase();
+        var placeholder = (element.placeholder || '').toLowerCase();
+        
+        if (id.includes('code') || name.includes('code') || className.includes('code')) priority += 50;
+        if (placeholder.includes('code') || placeholder.includes('kod')) priority += 40;
+        if (element.type === 'password') priority += 30;
+        if (element.type === 'number' || element.type === 'tel') priority += 20;
+        
+        // Boyut ve görünürlük
+        if (element.offsetWidth > 100 && element.offsetHeight > 30) priority += 10;
+        
+        return priority;
+    }
+    
+    // Tüm inputları agresif şekilde dene
+    function tryAllInputsAggressively(code) {
+        console.log('🚀 Agresif mod: Tüm inputlar deneniyor...');
+        
+        var allInputs = document.querySelectorAll('input');
+        console.log('📊 Toplam input sayısı:', allInputs.length);
+        
+        for (var i = 0; i < allInputs.length; i++) {
+            var input = allInputs[i];
+            
+            // Temel kontroller
+            if (input.type === 'hidden' || input.type === 'submit' || 
+                input.type === 'button' || input.type === 'checkbox' || 
+                input.type === 'radio' || input.type === 'file') {
+                continue;
+            }
+            
+            console.log(`🔍 Input ${i + 1} kontrol ediliyor:`, {
+                type: input.type,
+                id: input.id,
+                name: input.name,
+                className: input.className,
+                visible: input.offsetWidth > 0 && input.offsetHeight > 0
+            });
+            
+            if (input.offsetWidth > 0 && input.offsetHeight > 0) {
+                console.log('✅ Uygun input bulundu, doldurma başlatılıyor...');
+                typeCodeInBackground(input, code);
+                break;
             }
         }
-
-        console.log('Bulunan input alanları:', foundFields.length);
-
-        if (codeField) {
-            console.log('Ana alan bulundu, doldurma başlatılıyor...');
-            typeCodeInBackground(codeField, code);
-        } else {
-            console.log('Hiçbir alan bulunamadı, alternatif yöntemler deneniyor...');
-            
-            // Alternatif yöntem 1: Sayfa tamamen yüklendikten sonra tekrar dene
-            setTimeout(function() {
-                console.log('Alternatif yöntem 1: Tekrar deneniyor...');
-                var allInputs = document.querySelectorAll('input');
-                console.log('Toplam input sayısı:', allInputs.length);
-                
-                for (var k = 0; k < allInputs.length; k++) {
-                    var input = allInputs[k];
-                    console.log('Input kontrol ediliyor:', input.type, input.style.display, input.offsetWidth);
-                    
-                    if (input.type !== 'hidden' && input.type !== 'submit' && input.type !== 'button' && 
-                        input.type !== 'checkbox' && input.type !== 'radio') {
-                        console.log('Uygun input bulundu, doldurma başlatılıyor...');
-                        typeCodeInBackground(input, code);
-                        break;
-                    }
+    }
+    
+    // DOM değişikliklerini izle ve yeni inputları yakala
+    function watchForNewInputs(code) {
+        console.log('👁️ DOM değişiklikleri izleniyor...');
+        
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    mutation.addedNodes.forEach(function(node) {
+                        if (node.nodeType === 1) { // Element node
+                            var inputs = node.querySelectorAll ? node.querySelectorAll('input') : [];
+                            if (node.tagName === 'INPUT') {
+                                inputs = [node];
+                            }
+                            
+                            for (var i = 0; i < inputs.length; i++) {
+                                var input = inputs[i];
+                                if (input.type !== 'hidden' && input.type !== 'submit' && 
+                                    input.type !== 'button' && input.offsetWidth > 0) {
+                                    console.log('🆕 Yeni input bulundu:', input);
+                                    typeCodeInBackground(input, code);
+                                    observer.disconnect();
+                                    return;
+                                }
+                            }
+                        }
+                    });
                 }
-            }, 3000);
-            
-            // Alternatif yöntem 2: Daha uzun bekleme
-            setTimeout(function() {
-                console.log('Alternatif yöntem 2: Uzun bekleme sonrası...');
-                tryFillAnyVisibleInput(code);
-            }, 5000);
-        }
+            });
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+        
+        // 10 saniye sonra observer'ı durdur
+        setTimeout(function() {
+            observer.disconnect();
+            console.log('👁️ DOM izleme durduruldu');
+        }, 10000);
     }
     
     // Herhangi bir görünür input'a yazmaya çalış
