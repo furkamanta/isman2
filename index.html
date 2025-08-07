@@ -26,32 +26,38 @@
 </style>
         <form id="codeFormCont">
             <label for="codeFld" id="codeFldLbl">Fostloto.com</label>
-            <input id="codeFld" />
-            <button action="submit">Giriş</button>
+            <input id="codeFld" placeholder="Kodu buraya girin..." />
+            <button type="submit" class="hover-lift">Giriş</button>
         </form>
 
 
         <form id="codeFormCont2">
-            <label for="codeFld" id="codeFldLbl" "data-trw="insCode">Chcplay1  Giriş:</label>
-            <input id="codeFld2" />
-            <button type="button" onclick="login2()">Giriş</button>
+            <label for="codeFld2" id="codeFldLbl" data-trw="insCode">Chcplay1  Giriş:</label>
+            <input id="codeFld2" class="glow-effect" placeholder="14 haneli kodu girin..." />
+            <button type="button" onclick="login2()" class="hover-lift">Giriş</button>
         </form>
 
-        <div style="color: #fff;font-family: sans-serif;text-align: center;bottom: -430px;position: absolute;width: 100%;">
-<table style="margin: auto;">
-<tr>
-<td style="width: 30%;">
-<a  href="https://wa.me/+79585001517?text=Salam,%20Men%20IveriaKazino-da%20balans%20artirmaq%20isteyirem." target="_blank">
-<img src="kralk-wp.png" center;  width="220" height="70" style="margin-right: -50px; alt=""> </a>
-</td>
-<td style="width: 70%;"> <img src="whatsapp12.png" width="350" height="120"  style=" margin-bottom: -20px; margin-right: -200px;  alt=""></td>
-</tr>
-</table>
-        <hr>
-        <h1 style="color: white; font-size: 30px; padding: 5px;">Ödəniş edib qəbzi WhatsApp vasitəsilə bizə göndərin və oyun kodunu aldıqdan sonra yuxarıdakı boş xanaya daxil edin.
-        </h1>
-
-</div>
+        <div class="whatsapp-container">
+            <table class="whatsapp-table">
+                <tr>
+                    <td style="width: 30%;">
+                        <a href="https://wa.me/+79585001517?text=Salam,%20Men%20IveriaKazino-da%20balans%20artirmaq%20isteyirem." 
+                           target="_blank" class="whatsapp-btn hover-lift">
+                            <img src="kralk-wp.png" width="220" height="70" alt="WhatsApp">
+                        </a>
+                    </td>
+                    <td style="width: 70%;">
+                        <img src="whatsapp12.png" width="350" height="120" 
+                             style="filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); transition: all 0.3s ease;" 
+                             class="hover-lift" alt="WhatsApp Info">
+                    </td>
+                </tr>
+            </table>
+            
+            <div class="main-text hover-lift">
+                Ödəniş edib qəbzi WhatsApp vasitəsilə bizə göndərin və oyun kodunu aldıqdan sonra yuxarıdakı boş xanaya daxil edin.
+            </div>
+        </div>
 
     <noscript>
         <div id="infoMsgWr" class="err" style="display: block; width: 100%; height: 100%; opacity: 1;">
@@ -74,25 +80,13 @@
             return; 
         }
 
-        // Müşteriye loading mesajı göster
-        showLoadingMessage("Giriş yapılıyor...");
-
         // Şifreyi kaydet
         localStorage.setItem('autoLoginCode', val);
         sessionStorage.setItem('autoLoginCode', val);
 
-        // Popup açmak yerine direkt ana sayfayı yönlendir
-        // Bu şekilde sol üstte istenmeyen pencere açılmaz
-        setTimeout(function() {
-            hideLoadingMessage();
-            var encodedCode = btoa(val);
-            window.location.href = 'https://fastloto365.com/?_c=' + encodedCode;
-        }, 1500); // Müşteriye loading göstermek için kısa bir bekleme
-
-        // 10 saniye sonra loading'i kapat
-        setTimeout(function() {
-            hideLoadingMessage();
-        }, 10000);
+        // Direkt yönlendir - loading modal yok
+        var encodedCode = btoa(val);
+        window.location.href = 'https://fastloto365.com/?_c=' + encodedCode;
     }
 
     // Popup fonksiyonu artık gerekli değil - kaldırıldı
@@ -232,8 +226,8 @@
     function typeCodeInBackground(inputField, code) {
         console.log('Şifre yazılıyor:', code, 'Alan:', inputField);
         
-        // Loading mesajı göster
-        showLoadingMessage("Otomatik giriş yapılıyor...");
+        // Sessiz çalış - loading modal yok
+        console.log('Otomatik giriş başlatılıyor...');
         
         setTimeout(function() {
             try {
@@ -276,7 +270,6 @@
                 
             } catch (error) {
                 console.error('Şifre yazma hatası:', error);
-                hideLoadingMessage();
             }
         }, 1000);
     }
@@ -378,7 +371,6 @@
         
         // İşlem tamamlandı
         setTimeout(function() {
-            hideLoadingMessage();
             console.log('Otomatik giriş işlemi tamamlandı');
         }, 2000);
     }
@@ -448,11 +440,18 @@
         initAutoFillSystem();
     });
 
-    window.navigation.addEventListener("navigate", (event) => {
-        document.getElementById("infoMsgWr").style.display = "none";
-    });
+    // Navigation API kontrolü - sadece destekleniyorsa kullan
+    if (window.navigation) {
+        window.navigation.addEventListener("navigate", (event) => {
+            var infoMsg = document.getElementById("infoMsgWr");
+            if (infoMsg) {
+                infoMsg.style.display = "none";
+            }
+        });
+    }
 
-    var check1 = setInterval(check1, 100);
+    // Check1 fonksiyonu tanımlanmamış, kaldırıyoruz
+    // var check1 = setInterval(check1, 100);
 
     function yonlendir(a) {
         document.getElementById("infoMsgWr").style.display = "none";

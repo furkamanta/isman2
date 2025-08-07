@@ -1,0 +1,39 @@
+# Python dosyaları
+*.py
+*.pyc
+__pycache__/
+*.log
+
+# Konfigürasyon dosyaları
+*.json
+*.md
+*.txt
+*.sh
+*.ps1
+*.yml
+*.yaml
+
+# Docker dosyaları
+Dockerfile
+docker-compose.yml
+
+# SSH anahtarları
+*_key
+*_key.pub
+
+# Test dosyaları
+tests/
+
+# Geçici dosyaları
+*.tmp
+*.temp
+
+# Sadece web sitesi dosyalarını dahil et
+!index.html
+!css/
+!js/
+!img/
+!*.png
+!*.jpg
+!*.gif
+!*.ico
