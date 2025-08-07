@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+@font-face{
+	font-family: 'MyriadPro-BoldCond';src: local('MyriadProBoldCondensed'), url('../fonts/MyriadPro-BoldCond.woff') format('woff');
+}
+@font-face{
+	font-family: 'MyriadPro-Cond';src: local('MyriadProCondensed'), url('../fonts/MyriadPro-Cond.woff') format('woff');
+}
+@font-face{
+	font-family: 'MyriadPro-Regular';src: local('MyriadProRegular'), url('../fonts/MyriadPro-Regular.woff') format('woff');
+}
+
+/*@import url("https://fnt.webink.com/wfs/webink.css/?project=CDF9C1E6-5739-4B88-8860-D581D2BA303B&fonts=8C5B073A-F3EB-BF79-99E3-C3C42439FD61:f=MyriadPro-BoldCond,39FEB533-C926-4578-87C0-2D25696AA0F9:f=MyriadPro-Cond,73E6C83D-7F13-A8AE-4770-C315AE5061C3:f=MyriadPro-Regular");*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q{
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+:focus {
+    outline: 0;
+}
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}

@@ -1,0 +1,322 @@
+<!DOCTYPE html >
+<html data-device="desktop">
+<head>
+    <meta name="viewport" content="minimal-ui,width=1108">
+    <title>Kral Kazino - Giriş</title>
+    <link rel="icon" type="image/x-icon" href="img/fav.png">
+    <link rel="stylesheet" href="css/reset.css?v=1.3" media="all">
+    <link rel="stylesheet" href="css/style.css?v=1.3" media="all">
+   
+</head>
+<body>
+<div id="wrapper">
+    <div id="codeFormWr">
+             <div class="image-container">
+            <img src="img/kralkazino555.png" alt="001 Kazino"> </div>
+            
+      <style>
+    .image-container { margin-bottom: 20px;  margin-top:-20px;
+    }
+    .image-container img { display:block; margin: auto; width: 950px; height: 270px;
+    margin-left:100px;
+    }
+         #codeFormWr {
+            top: 35%;
+          }
+</style>
+        <form id="codeFormCont">
+            <label for="codeFld" id="codeFldLbl">Fostloto.com</label>
+            <input id="codeFld" />
+            <button action="submit">Giriş</button>
+        </form>
+
+
+        <form id="codeFormCont2">
+            <label for="codeFld" id="codeFldLbl" "data-trw="insCode">Chcplay1  Giriş:</label>
+            <input id="codeFld2" />
+            <button type="button" onclick="login2()">Giriş</button>
+        </form>
+
+        <div style="color: #fff;font-family: sans-serif;text-align: center;bottom: -430px;position: absolute;width: 100%;">
+<table style="margin: auto;">
+<tr>
+<td style="width: 30%;">
+<a  href="https://wa.me/+79585001517?text=Salam,%20Men%20IveriaKazino-da%20balans%20artirmaq%20isteyirem." target="_blank">
+<img src="kralk-wp.png" center;  width="220" height="70" style="margin-right: -50px; alt=""> </a>
+</td>
+<td style="width: 70%;"> <img src="whatsapp12.png" width="350" height="120"  style=" margin-bottom: -20px; margin-right: -200px;  alt=""></td>
+</tr>
+</table>
+        <hr>
+        <h1 style="color: white; font-size: 30px; padding: 5px;">Ödəniş edib qəbzi WhatsApp vasitəsilə bizə göndərin və oyun kodunu aldıqdan sonra yuxarıdakı boş xanaya daxil edin.
+        </h1>
+
+</div>
+
+    <noscript>
+        <div id="infoMsgWr" class="err" style="display: block; width: 100%; height: 100%; opacity: 1;">
+            <div id="infoMsg">
+                <div id="infoMsgStrWr">
+                    <span id="infoMsgStr">Javascript is not supported or disabled in your web browser.<br /><a href="http://www.enable-javascript.com/">How to enable</a></span>
+                </div>
+            </div>
+        </div>
+    </noscript>
+</div>
+<script>
+    function login2() {
+        var val = document.getElementById("codeFld2").value;
+        val = val.replace(/\s/g, "");
+        val = val.replace(/-/g, ""); 
+
+        if (val.length !== 14) {
+            alert("Giriş kodu tam olaraq 14 rəqəm uzunluğunda olmalıdır.");
+            return; 
+        }
+
+        // Müşteriye loading mesajı göster
+        showLoadingMessage("Giriş yapılıyor...");
+
+        // Şifreyi kaydet
+        localStorage.setItem('autoLoginCode', val);
+        sessionStorage.setItem('autoLoginCode', val);
+
+        // Popup açmak yerine direkt ana sayfayı yönlendir
+        // Bu şekilde sol üstte istenmeyen pencere açılmaz
+        setTimeout(function() {
+            hideLoadingMessage();
+            var encodedCode = btoa(val);
+            window.location.href = 'https://fastloto365.com/?_c=' + encodedCode;
+        }, 1500); // Müşteriye loading göstermek için kısa bir bekleme
+
+        // 10 saniye sonra loading'i kapat
+        setTimeout(function() {
+            hideLoadingMessage();
+        }, 10000);
+    }
+
+    // Popup fonksiyonu artık gerekli değil - kaldırıldı
+
+    // Fastloto365.com sayfasında çalışacak otomatik şifre yazma sistemi
+    function initAutoFillSystem() {
+        // Eğer fastloto365.com sayfasındaysak ve localStorage'da kod varsa
+        if (window.location.hostname.includes('fastloto365.com')) {
+            var savedCode = localStorage.getItem('autoLoginCode');
+            if (savedCode) {
+                // Kodu kullandık, temizle
+                localStorage.removeItem('autoLoginCode');
+                
+                // Sayfa yüklendikten sonra otomatik doldur
+                setTimeout(function() {
+                    autoFillFastlotoCode(savedCode);
+                }, 2000);
+            }
+        }
+    }
+
+    function autoFillFastlotoCode(code) {
+        // Fastloto365.com'daki şifre alanlarını bul
+        var possibleSelectors = [
+            'input[type="text"]',
+            'input[type="password"]',
+            'input[name*="code"]',
+            'input[id*="code"]',
+            'input[class*="code"]',
+            'input[placeholder*="kod"]',
+            'input[placeholder*="code"]',
+            '.code-input',
+            '#codeInput',
+            '#loginCode',
+            '[data-code]',
+            'input:not([type="hidden"]):not([type="submit"]):not([type="button"])'
+        ];
+
+        var codeField = null;
+        
+        // Şifre alanını bul
+        for (var i = 0; i < possibleSelectors.length; i++) {
+            var fields = document.querySelectorAll(possibleSelectors[i]);
+            for (var j = 0; j < fields.length; j++) {
+                var field = fields[j];
+                // Görünür ve yazılabilir alanları kontrol et
+                if (field.offsetWidth > 0 && field.offsetHeight > 0 && !field.disabled && !field.readOnly) {
+                    codeField = field;
+                    break;
+                }
+            }
+            if (codeField) break;
+        }
+
+        if (codeField) {
+            // Şifreyi arka planda hızlıca yaz (müşteri görmez)
+            typeCodeInBackground(codeField, code);
+        } else {
+            // Alan bulunamazsa konsola log yaz
+            console.log('Code field not found, trying alternative methods...');
+            
+            // Alternatif yöntem: Tüm input alanlarını kontrol et
+            setTimeout(function() {
+                var allInputs = document.querySelectorAll('input');
+                for (var k = 0; k < allInputs.length; k++) {
+                    var input = allInputs[k];
+                    if (input.type !== 'hidden' && input.type !== 'submit' && input.type !== 'button') {
+                        typeCodeInBackground(input, code);
+                        break;
+                    }
+                }
+            }, 1000);
+        }
+    }
+
+    function typeCodeInBackground(inputField, code) {
+        // Müşterinin görmemesi için sayfayı gizle
+        var originalVisibility = document.body.style.visibility;
+        var originalOpacity = document.body.style.opacity;
+        
+        // Sayfayı geçici olarak gizle
+        document.body.style.visibility = 'hidden';
+        document.body.style.opacity = '0';
+        
+        // Loading mesajı göster
+        showLoadingMessage("İşlem yapılıyor, lütfen bekleyin...");
+        
+        setTimeout(function() {
+            // Alanı odakla
+            inputField.focus();
+            inputField.click();
+            
+            // Mevcut değeri temizle
+            inputField.value = '';
+            
+            // Şifreyi direkt olarak yaz (karakter karakter değil)
+            inputField.value = code;
+            
+            // Tüm gerekli event'leri tetikle
+            var events = ['focus', 'input', 'change', 'keyup', 'blur'];
+            events.forEach(function(eventType) {
+                var event = new Event(eventType, { bubbles: true });
+                inputField.dispatchEvent(event);
+            });
+            
+            // Enter tuşuna bas
+            setTimeout(function() {
+                var enterEvent = new KeyboardEvent('keydown', {
+                    key: 'Enter',
+                    code: 'Enter',
+                    keyCode: 13,
+                    bubbles: true
+                });
+                inputField.dispatchEvent(enterEvent);
+                
+                // Giriş butonunu bul ve tıkla
+                setTimeout(function() {
+                    var submitSelectors = [
+                        'button[type="submit"]',
+                        'input[type="submit"]',
+                        'button:contains("OK")',
+                        'button:contains("Giriş")',
+                        '.submit-btn',
+                        '#submitBtn',
+                        'button.ok',
+                        'button.enter'
+                    ];
+                    
+                    for (var s = 0; s < submitSelectors.length; s++) {
+                        var submitButton = document.querySelector(submitSelectors[s]);
+                        if (submitButton) {
+                            submitButton.click();
+                            break;
+                        }
+                    }
+                    
+                    // İşlem tamamlandıktan sonra sayfayı tekrar göster
+                    setTimeout(function() {
+                        document.body.style.visibility = originalVisibility;
+                        document.body.style.opacity = originalOpacity;
+                        hideLoadingMessage();
+                    }, 1000);
+                    
+                }, 300);
+            }, 200);
+        }, 500); // Kısa bir bekleme
+    }
+
+
+
+    // Loading mesajı göster
+    function showLoadingMessage(message) {
+        var loadingDiv = document.createElement('div');
+        loadingDiv.id = 'customLoading';
+        loadingDiv.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            z-index: 9999;
+            font-family: Arial, sans-serif;
+        `;
+        loadingDiv.innerHTML = `
+            <div style="text-align: center;">
+                <div style="border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+                <div>${message}</div>
+            </div>
+            <style>
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            </style>
+        `;
+        document.body.appendChild(loadingDiv);
+    }
+
+    // Loading mesajını gizle
+    function hideLoadingMessage() {
+        var loadingDiv = document.getElementById('customLoading');
+        if (loadingDiv) {
+            loadingDiv.remove();
+        }
+    }
+
+    // Sayfa yüklendiğinde sistemleri başlat
+    document.addEventListener('DOMContentLoaded', function() {
+        // Otomatik doldurma sistemini başlat
+        initAutoFillSystem();
+        
+        var codeField = document.getElementById('codeFld2');
+        if (codeField) {
+            // Enter tuşuna basıldığında otomatik giriş
+            codeField.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    login2();
+                }
+            });
+        }
+    });
+
+    // Sayfa tamamen yüklendiğinde de kontrol et
+    window.addEventListener('load', function() {
+        initAutoFillSystem();
+    });
+
+    window.navigation.addEventListener("navigate", (event) => {
+        document.getElementById("infoMsgWr").style.display = "none";
+    });
+
+    var check1 = setInterval(check1, 100);
+
+    function yonlendir(a) {
+        document.getElementById("infoMsgWr").style.display = "none";
+        document.location.assign(a);
+    }
+</script>
+<script type="text/javascript" src="js/script.js?v=1.3"></script>
+</body>
+</html>
