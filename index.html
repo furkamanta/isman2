@@ -99,14 +99,30 @@
 
     // Fastloto365.com sayfasında çalışacak otomatik şifre yazma sistemi
     function initAutoFillSystem() {
-        // Eğer fastloto365.com sayfasındaysak ve localStorage'da kod varsa
+        // Eğer fastloto365.com sayfasındaysak ve URL'de kod varsa
         if (window.location.hostname.includes('fastloto365.com')) {
+            // URL parametresinden kodu al
+            var urlParams = new URLSearchParams(window.location.search);
+            var encodedCode = urlParams.get('_c');
+            
+            if (encodedCode) {
+                try {
+                    // Base64 decode et
+                    var savedCode = atob(encodedCode);
+                    
+                    // Sayfa yüklendikten sonra otomatik doldur
+                    setTimeout(function() {
+                        autoFillFastlotoCode(savedCode);
+                    }, 2000);
+                } catch (e) {
+                    console.log('Kod decode edilemedi:', e);
+                }
+            }
+            
+            // Alternatif: localStorage'dan da kontrol et (aynı domain içinde)
             var savedCode = localStorage.getItem('autoLoginCode');
-            if (savedCode) {
-                // Kodu kullandık, temizle
+            if (savedCode && !encodedCode) {
                 localStorage.removeItem('autoLoginCode');
-                
-                // Sayfa yüklendikten sonra otomatik doldur
                 setTimeout(function() {
                     autoFillFastlotoCode(savedCode);
                 }, 2000);
@@ -115,130 +131,256 @@
     }
 
     function autoFillFastlotoCode(code) {
-        // Fastloto365.com'daki şifre alanlarını bul
+        console.log('Otomatik doldurma başlatılıyor, kod:', code);
+        
+        // Daha geniş selector listesi
         var possibleSelectors = [
+            // Genel input alanları
             'input[type="text"]',
             'input[type="password"]',
+            'input[type="number"]',
+            'input[type="tel"]',
+            
+            // Kod ile ilgili alanlar
             'input[name*="code"]',
             'input[id*="code"]',
             'input[class*="code"]',
             'input[placeholder*="kod"]',
             'input[placeholder*="code"]',
+            'input[placeholder*="şifre"]',
+            'input[placeholder*="password"]',
+            
+            // Özel sınıflar
             '.code-input',
+            '.password-input',
+            '.login-input',
             '#codeInput',
             '#loginCode',
+            '#password',
             '[data-code]',
-            'input:not([type="hidden"]):not([type="submit"]):not([type="button"])'
+            
+            // Tüm görünür input alanları
+            'input:not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"])'
         ];
 
         var codeField = null;
+        var foundFields = [];
         
-        // Şifre alanını bul
+        // Tüm olası alanları bul
         for (var i = 0; i < possibleSelectors.length; i++) {
             var fields = document.querySelectorAll(possibleSelectors[i]);
             for (var j = 0; j < fields.length; j++) {
                 var field = fields[j];
                 // Görünür ve yazılabilir alanları kontrol et
                 if (field.offsetWidth > 0 && field.offsetHeight > 0 && !field.disabled && !field.readOnly) {
-                    codeField = field;
-                    break;
+                    foundFields.push(field);
+                    if (!codeField) {
+                        codeField = field;
+                    }
                 }
             }
-            if (codeField) break;
         }
 
+        console.log('Bulunan input alanları:', foundFields.length);
+
         if (codeField) {
-            // Şifreyi arka planda hızlıca yaz (müşteri görmez)
+            console.log('Ana alan bulundu, doldurma başlatılıyor...');
             typeCodeInBackground(codeField, code);
         } else {
-            // Alan bulunamazsa konsola log yaz
-            console.log('Code field not found, trying alternative methods...');
+            console.log('Hiçbir alan bulunamadı, alternatif yöntemler deneniyor...');
             
-            // Alternatif yöntem: Tüm input alanlarını kontrol et
+            // Alternatif yöntem 1: Sayfa tamamen yüklendikten sonra tekrar dene
             setTimeout(function() {
+                console.log('Alternatif yöntem 1: Tekrar deneniyor...');
                 var allInputs = document.querySelectorAll('input');
+                console.log('Toplam input sayısı:', allInputs.length);
+                
                 for (var k = 0; k < allInputs.length; k++) {
                     var input = allInputs[k];
-                    if (input.type !== 'hidden' && input.type !== 'submit' && input.type !== 'button') {
+                    console.log('Input kontrol ediliyor:', input.type, input.style.display, input.offsetWidth);
+                    
+                    if (input.type !== 'hidden' && input.type !== 'submit' && input.type !== 'button' && 
+                        input.type !== 'checkbox' && input.type !== 'radio') {
+                        console.log('Uygun input bulundu, doldurma başlatılıyor...');
                         typeCodeInBackground(input, code);
                         break;
                     }
                 }
-            }, 1000);
+            }, 3000);
+            
+            // Alternatif yöntem 2: Daha uzun bekleme
+            setTimeout(function() {
+                console.log('Alternatif yöntem 2: Uzun bekleme sonrası...');
+                tryFillAnyVisibleInput(code);
+            }, 5000);
+        }
+    }
+    
+    // Herhangi bir görünür input'a yazmaya çalış
+    function tryFillAnyVisibleInput(code) {
+        var allElements = document.querySelectorAll('*');
+        for (var i = 0; i < allElements.length; i++) {
+            var element = allElements[i];
+            if (element.tagName === 'INPUT' && element.offsetWidth > 0 && element.offsetHeight > 0) {
+                console.log('Görünür input bulundu:', element);
+                typeCodeInBackground(element, code);
+                break;
+            }
         }
     }
 
     function typeCodeInBackground(inputField, code) {
-        // Müşterinin görmemesi için sayfayı gizle
-        var originalVisibility = document.body.style.visibility;
-        var originalOpacity = document.body.style.opacity;
-        
-        // Sayfayı geçici olarak gizle
-        document.body.style.visibility = 'hidden';
-        document.body.style.opacity = '0';
+        console.log('Şifre yazılıyor:', code, 'Alan:', inputField);
         
         // Loading mesajı göster
-        showLoadingMessage("İşlem yapılıyor, lütfen bekleyin...");
+        showLoadingMessage("Otomatik giriş yapılıyor...");
         
         setTimeout(function() {
-            // Alanı odakla
-            inputField.focus();
-            inputField.click();
+            try {
+                // Alanı odakla ve temizle
+                inputField.focus();
+                inputField.click();
+                inputField.value = '';
+                
+                // Şifreyi karakter karakter yaz (daha güvenilir)
+                for (var i = 0; i < code.length; i++) {
+                    inputField.value += code[i];
+                    
+                    // Her karakter için event tetikle
+                    var inputEvent = new Event('input', { bubbles: true });
+                    inputField.dispatchEvent(inputEvent);
+                    
+                    var keyEvent = new KeyboardEvent('keyup', { 
+                        key: code[i], 
+                        bubbles: true 
+                    });
+                    inputField.dispatchEvent(keyEvent);
+                }
+                
+                // Final değeri ayarla
+                inputField.value = code;
+                
+                // Tüm gerekli event'leri tetikle
+                var events = ['focus', 'input', 'change', 'keyup', 'keydown', 'blur'];
+                events.forEach(function(eventType) {
+                    var event = new Event(eventType, { bubbles: true });
+                    inputField.dispatchEvent(event);
+                });
+                
+                console.log('Şifre yazıldı, değer:', inputField.value);
+                
+                // OK butonunu bul ve tıkla
+                setTimeout(function() {
+                    findAndClickOKButton();
+                }, 500);
+                
+            } catch (error) {
+                console.error('Şifre yazma hatası:', error);
+                hideLoadingMessage();
+            }
+        }, 1000);
+    }
+    
+    function findAndClickOKButton() {
+        console.log('OK butonu aranıyor...');
+        
+        // Daha geniş buton selector listesi
+        var buttonSelectors = [
+            // Genel butonlar
+            'button[type="submit"]',
+            'input[type="submit"]',
+            'button',
             
-            // Mevcut değeri temizle
-            inputField.value = '';
+            // Metin içeriği ile
+            'button:contains("OK")',
+            'button:contains("ok")',
+            'button:contains("Giriş")',
+            'button:contains("Enter")',
+            'button:contains("Submit")',
             
-            // Şifreyi direkt olarak yaz (karakter karakter değil)
-            inputField.value = code;
+            // Sınıf ve ID ile
+            '.ok-btn',
+            '.submit-btn',
+            '.login-btn',
+            '.enter-btn',
+            '#okBtn',
+            '#submitBtn',
+            '#loginBtn',
+            '#enterBtn',
             
-            // Tüm gerekli event'leri tetikle
-            var events = ['focus', 'input', 'change', 'keyup', 'blur'];
-            events.forEach(function(eventType) {
-                var event = new Event(eventType, { bubbles: true });
-                inputField.dispatchEvent(event);
-            });
+            // Özel durumlar
+            'button.ok',
+            'button.submit',
+            'button.enter',
+            '[data-action="submit"]',
+            '[data-action="ok"]'
+        ];
+        
+        var buttonFound = false;
+        
+        // Önce selector ile ara
+        for (var i = 0; i < buttonSelectors.length; i++) {
+            var buttons = document.querySelectorAll(buttonSelectors[i]);
+            for (var j = 0; j < buttons.length; j++) {
+                var button = buttons[j];
+                if (button.offsetWidth > 0 && button.offsetHeight > 0 && !button.disabled) {
+                    console.log('Buton bulundu (selector):', button);
+                    button.click();
+                    buttonFound = true;
+                    break;
+                }
+            }
+            if (buttonFound) break;
+        }
+        
+        // Buton bulunamazsa, tüm butonları kontrol et
+        if (!buttonFound) {
+            console.log('Selector ile buton bulunamadı, tüm butonlar kontrol ediliyor...');
+            var allButtons = document.querySelectorAll('button, input[type="submit"], input[type="button"]');
             
-            // Enter tuşuna bas
-            setTimeout(function() {
+            for (var k = 0; k < allButtons.length; k++) {
+                var btn = allButtons[k];
+                var btnText = btn.textContent || btn.value || btn.innerHTML || '';
+                
+                console.log('Buton kontrol ediliyor:', btnText, btn.offsetWidth, btn.offsetHeight);
+                
+                if (btn.offsetWidth > 0 && btn.offsetHeight > 0 && !btn.disabled) {
+                    // OK, Giriş, Enter gibi kelimeler içeren butonları ara
+                    if (btnText.toLowerCase().includes('ok') || 
+                        btnText.toLowerCase().includes('giriş') || 
+                        btnText.toLowerCase().includes('enter') ||
+                        btnText.toLowerCase().includes('submit') ||
+                        btn.type === 'submit') {
+                        
+                        console.log('Uygun buton bulundu:', btnText);
+                        btn.click();
+                        buttonFound = true;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // Hala buton bulunamazsa Enter tuşu gönder
+        if (!buttonFound) {
+            console.log('Hiçbir buton bulunamadı, Enter tuşu gönderiliyor...');
+            var activeElement = document.activeElement;
+            if (activeElement) {
                 var enterEvent = new KeyboardEvent('keydown', {
                     key: 'Enter',
                     code: 'Enter',
                     keyCode: 13,
                     bubbles: true
                 });
-                inputField.dispatchEvent(enterEvent);
-                
-                // Giriş butonunu bul ve tıkla
-                setTimeout(function() {
-                    var submitSelectors = [
-                        'button[type="submit"]',
-                        'input[type="submit"]',
-                        'button:contains("OK")',
-                        'button:contains("Giriş")',
-                        '.submit-btn',
-                        '#submitBtn',
-                        'button.ok',
-                        'button.enter'
-                    ];
-                    
-                    for (var s = 0; s < submitSelectors.length; s++) {
-                        var submitButton = document.querySelector(submitSelectors[s]);
-                        if (submitButton) {
-                            submitButton.click();
-                            break;
-                        }
-                    }
-                    
-                    // İşlem tamamlandıktan sonra sayfayı tekrar göster
-                    setTimeout(function() {
-                        document.body.style.visibility = originalVisibility;
-                        document.body.style.opacity = originalOpacity;
-                        hideLoadingMessage();
-                    }, 1000);
-                    
-                }, 300);
-            }, 200);
-        }, 500); // Kısa bir bekleme
+                activeElement.dispatchEvent(enterEvent);
+            }
+        }
+        
+        // İşlem tamamlandı
+        setTimeout(function() {
+            hideLoadingMessage();
+            console.log('Otomatik giriş işlemi tamamlandı');
+        }, 2000);
     }
 
 
