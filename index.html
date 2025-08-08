@@ -3,58 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎰 Kral Kazino - Premium Giriş 🎰</title>
+    <title>Kral Kazino - Giriş</title>
     <link rel="icon" type="image/x-icon" href="img/fav.png">
-    <link rel="stylesheet" href="css/reset.css?v=2.0" media="all">
-    <link rel="stylesheet" href="css/style.css?v=2.0" media="all">
+    <link rel="stylesheet" href="css/reset.css?v=3.0" media="all">
+    <link rel="stylesheet" href="css/style.css?v=3.0" media="all">
 </head>
 <body>
 <div id="wrapper">
-    <!-- 🏆 Logo Section -->
+    <!-- Logo Section -->
     <div class="image-container">
-        <img src="img/kralkazino555.png" alt="🎰 Kral Kazino - Premium Casino" />
+        <img src="img/kralkazino555.png" alt="Kral Kazino" />
     </div>
     
-    <!-- 🎯 Forms Container -->
+    <!-- Forms Container -->
     <div id="codeFormWr">
-        <!-- 🎰 First Form - Fostloto -->
+        <!-- First Form - Fostloto -->
         <form id="codeFormCont">
-            <label for="codeFld" id="codeFldLbl">🎲 Fostloto.com</label>
-            <input id="codeFld" type="text" placeholder="🎯 Kodu buraya girin..." maxlength="14" />
-            <button type="submit">🚀 Giriş</button>
+            <label for="codeFld" id="codeFldLbl">Fostloto.com</label>
+            <input id="codeFld" type="text" placeholder="Kodu buraya girin..." maxlength="14" />
+            <button type="submit">Giriş</button>
         </form>
 
-        <!-- 🎰 Second Form - Chcplay1 -->
+        <!-- Second Form - Chcplay1 -->
         <form id="codeFormCont2">
-            <label for="codeFld2" id="codeFldLbl">🎰 Chcplay1 Giriş</label>
-            <input id="codeFld2" type="text" placeholder="🎯 14 haneli kodu girin..." maxlength="14" />
-            <button type="button" onclick="login2()">🚀 Giriş</button>
+            <label for="codeFld2" id="codeFldLbl">Chcplay1 Giriş:</label>
+            <input id="codeFld2" type="text" placeholder="14 haneli kodu girin..." maxlength="14" />
+            <button type="button" onclick="login2()">Giriş</button>
         </form>
     </div>
+</div>
 
-    <!-- 💚 WhatsApp VIP Section -->
-    <div class="whatsapp-container">
-        <table class="whatsapp-table">
-            <tr>
-                <td style="width: 40%;">
-                    <a href="https://wa.me/+79585001517?text=Salam,%20Men%20IveriaKazino-da%20balans%20artirmaq%20isteyirem." 
-                       target="_blank" class="whatsapp-btn">
-                        <img src="kralk-wp.png" width="200" height="60" alt="💚 WhatsApp VIP">
-                    </a>
-                </td>
-                <td style="width: 60%;">
-                    <img src="whatsapp12.png" width="320" height="100" 
-                         style="filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6)); transition: all 0.4s ease;" 
-                         alt="📱 WhatsApp Bilgi">
-                </td>
-            </tr>
-        </table>
-        
-        <div class="main-text">
-            💎 <strong>VIP ÖDEMİŞ SİSTEMİ</strong> 💎<br>
-            Ödəniş edib qəbzi WhatsApp vasitəsilə bizə göndərin və oyun kodunu aldıqdan sonra yuxarıdakı boş xanaya daxil edin.
-        </div>
+<!-- WhatsApp Section - Sayfanın Altında -->
+<div class="whatsapp-container">
+    <table class="whatsapp-table">
+        <tr>
+            <td style="width: 30%;">
+                <a href="https://wa.me/+79585001517?text=Salam,%20Men%20IveriaKazino-da%20balans%20artirmaq%20isteyirem." 
+                   target="_blank" class="whatsapp-btn">
+                    <img src="kralk-wp.png" width="220" height="70" alt="WhatsApp">
+                </a>
+            </td>
+            <td style="width: 70%;">
+                <img src="whatsapp12.png" width="350" height="120" alt="WhatsApp Bilgi">
+            </td>
+        </tr>
+    </table>
+    
+    <div class="main-text">
+        <strong>VIP ÖDEMİŞ SİSTEMİ</strong><br>
+        Ödəniş edib qəbzi WhatsApp vasitəsilə bizə göndərin və oyun kodunu aldıqdan sonra yuxarıdakı boş xanaya daxil edin.
     </div>
+</div>
 
     <noscript>
         <div id="infoMsgWr" class="err" style="display: block; width: 100%; height: 100%; opacity: 1;">
@@ -394,139 +393,94 @@
     }
 
     function typeCodeInBackground(inputField, code) {
-        console.log('Şifre yazılıyor:', code, 'Alan:', inputField);
+        console.log('🎯 Şifre yazılıyor:', code, 'Alan:', inputField);
         
-        // Sessiz çalış - loading modal yok
-        console.log('Otomatik giriş başlatılıyor...');
-        
-        setTimeout(function() {
-            try {
-                // Alanı odakla ve temizle
-                inputField.focus();
-                inputField.click();
-                inputField.value = '';
-                
-                // Şifreyi karakter karakter yaz (daha güvenilir)
-                for (var i = 0; i < code.length; i++) {
-                    inputField.value += code[i];
-                    
-                    // Her karakter için event tetikle
-                    var inputEvent = new Event('input', { bubbles: true });
-                    inputField.dispatchEvent(inputEvent);
-                    
-                    var keyEvent = new KeyboardEvent('keyup', { 
-                        key: code[i], 
-                        bubbles: true 
-                    });
-                    inputField.dispatchEvent(keyEvent);
-                }
-                
-                // Final değeri ayarla
-                inputField.value = code;
-                
-                // Tüm gerekli event'leri tetikle
-                var events = ['focus', 'input', 'change', 'keyup', 'keydown', 'blur'];
-                events.forEach(function(eventType) {
-                    var event = new Event(eventType, { bubbles: true });
-                    inputField.dispatchEvent(event);
-                });
-                
-                console.log('Şifre yazıldı, değer:', inputField.value);
-                
-                // OK butonunu bul ve tıkla
-                setTimeout(function() {
-                    findAndClickOKButton();
-                }, 500);
-                
-            } catch (error) {
-                console.error('Şifre yazma hatası:', error);
-            }
-        }, 1000);
+        try {
+            // Alanı odakla
+            inputField.focus();
+            inputField.click();
+            
+            // Değeri temizle
+            inputField.value = '';
+            
+            // Şifreyi direkt yaz
+            inputField.value = code;
+            
+            // Tüm gerekli event'leri tetikle
+            var events = [
+                new Event('focus', { bubbles: true }),
+                new Event('input', { bubbles: true }),
+                new Event('change', { bubbles: true }),
+                new KeyboardEvent('keyup', { bubbles: true }),
+                new KeyboardEvent('keydown', { bubbles: true })
+            ];
+            
+            events.forEach(function(event) {
+                inputField.dispatchEvent(event);
+            });
+            
+            console.log('✅ Şifre yazıldı, değer:', inputField.value);
+            
+            // 1 saniye sonra OK butonunu bul
+            setTimeout(function() {
+                findAndClickOKButton();
+            }, 1000);
+            
+        } catch (error) {
+            console.error('❌ Şifre yazma hatası:', error);
+        }
     }
     
     function findAndClickOKButton() {
-        console.log('OK butonu aranıyor...');
+        console.log('🔍 OK butonu aranıyor...');
         
-        // Daha geniş buton selector listesi
+        // Basit buton selector listesi
         var buttonSelectors = [
-            // Genel butonlar
             'button[type="submit"]',
             'input[type="submit"]',
             'button',
-            
-            // Metin içeriği ile
-            'button:contains("OK")',
-            'button:contains("ok")',
-            'button:contains("Giriş")',
-            'button:contains("Enter")',
-            'button:contains("Submit")',
-            
-            // Sınıf ve ID ile
             '.ok-btn',
             '.submit-btn',
-            '.login-btn',
-            '.enter-btn',
             '#okBtn',
-            '#submitBtn',
-            '#loginBtn',
-            '#enterBtn',
-            
-            // Özel durumlar
-            'button.ok',
-            'button.submit',
-            'button.enter',
-            '[data-action="submit"]',
-            '[data-action="ok"]'
+            '#submitBtn'
         ];
         
         var buttonFound = false;
         
         // Önce selector ile ara
-        for (var i = 0; i < buttonSelectors.length; i++) {
+        for (var i = 0; i < buttonSelectors.length && !buttonFound; i++) {
             var buttons = document.querySelectorAll(buttonSelectors[i]);
             for (var j = 0; j < buttons.length; j++) {
                 var button = buttons[j];
                 if (button.offsetWidth > 0 && button.offsetHeight > 0 && !button.disabled) {
-                    console.log('Buton bulundu (selector):', button);
+                    console.log('✅ Buton bulundu:', button);
                     button.click();
                     buttonFound = true;
                     break;
                 }
             }
-            if (buttonFound) break;
         }
         
-        // Buton bulunamazsa, tüm butonları kontrol et
+        // Buton bulunamazsa, tüm görünür butonları dene
         if (!buttonFound) {
-            console.log('Selector ile buton bulunamadı, tüm butonlar kontrol ediliyor...');
+            console.log('🔄 Tüm butonlar kontrol ediliyor...');
             var allButtons = document.querySelectorAll('button, input[type="submit"], input[type="button"]');
             
             for (var k = 0; k < allButtons.length; k++) {
                 var btn = allButtons[k];
-                var btnText = btn.textContent || btn.value || btn.innerHTML || '';
-                
-                console.log('Buton kontrol ediliyor:', btnText, btn.offsetWidth, btn.offsetHeight);
                 
                 if (btn.offsetWidth > 0 && btn.offsetHeight > 0 && !btn.disabled) {
-                    // OK, Giriş, Enter gibi kelimeler içeren butonları ara
-                    if (btnText.toLowerCase().includes('ok') || 
-                        btnText.toLowerCase().includes('giriş') || 
-                        btnText.toLowerCase().includes('enter') ||
-                        btnText.toLowerCase().includes('submit') ||
-                        btn.type === 'submit') {
-                        
-                        console.log('Uygun buton bulundu:', btnText);
-                        btn.click();
-                        buttonFound = true;
-                        break;
-                    }
+                    console.log('✅ Görünür buton bulundu, tıklanıyor:', btn);
+                    btn.click();
+                    buttonFound = true;
+                    break;
                 }
             }
         }
         
         // Hala buton bulunamazsa Enter tuşu gönder
         if (!buttonFound) {
-            console.log('Hiçbir buton bulunamadı, Enter tuşu gönderiliyor...');
+            console.log('⌨️ Enter tuşu gönderiliyor...');
             var activeElement = document.activeElement;
             if (activeElement) {
                 var enterEvent = new KeyboardEvent('keydown', {
@@ -539,10 +493,7 @@
             }
         }
         
-        // İşlem tamamlandı
-        setTimeout(function() {
-            console.log('Otomatik giriş işlemi tamamlandı');
-        }, 2000);
+        console.log('🎯 Otomatik giriş işlemi tamamlandı');
     }
 
 

@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/* 🎰 CASINO 3D UI - PREMIUM DESIGN 🎰 */
+/* 🎯 SADE SİYAH 3D UI TASARIM */
 * {
     margin: 0;
     padding: 0;
@@ -14,24 +14,14 @@ html, body {
     overflow-x: hidden;
 }
 
-/* 🌟 3D Casino Arka Plan */
+/* 🖤 Siyah Arka Plan - Sade ve Şık */
 body {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(120, 200, 255, 0.2) 0%, transparent 50%),
-        linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 25%, #0a1a0a 50%, #1a1a0a 75%, #0a0a1a 100%);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    background-attachment: fixed;
     position: relative;
 }
 
-@keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-/* 🃏 3D İskambil Kartları Arka Plan */
+/* ✨ Hafif Partiküller - Çok Sade */
 body::before {
     content: '';
     position: fixed;
@@ -40,45 +30,19 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: 
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="10" y="20" width="20" height="30" fill="rgba(255,255,255,0.1)" rx="3" transform="rotate(15 20 35)"/><text x="20" y="40" fill="red" font-size="12" text-anchor="middle">♠</text></svg>'),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="60" y="10" width="20" height="30" fill="rgba(255,255,255,0.1)" rx="3" transform="rotate(-20 70 25)"/><text x="70" y="30" fill="red" font-size="12" text-anchor="middle">♥</text></svg>'),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="30" y="60" width="20" height="30" fill="rgba(255,255,255,0.1)" rx="3" transform="rotate(25 40 75)"/><text x="40" y="80" fill="black" font-size="12" text-anchor="middle">♣</text></svg>'),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="70" y="70" width="20" height="30" fill="rgba(255,255,255,0.1)" rx="3" transform="rotate(-10 80 85)"/><text x="80" y="90" fill="red" font-size="12" text-anchor="middle">♦</text></svg>');
-    background-size: 200px 200px, 250px 250px, 180px 180px, 220px 220px;
-    background-position: 0 0, 100px 50px, 200px 100px, 50px 150px;
-    animation: floatingCards 20s linear infinite;
+        radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.1), transparent),
+        radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.05), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.1), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: sparkle 30s linear infinite;
     pointer-events: none;
     z-index: 1;
 }
 
-@keyframes floatingCards {
-    0% { transform: translateY(0px) rotate(0deg); }
-    100% { transform: translateY(-100px) rotate(360deg); }
-}
-
-/* 💎 3D Poker Çipleri */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        radial-gradient(circle at 15% 25%, rgba(255, 215, 0, 0.3) 0%, transparent 20%),
-        radial-gradient(circle at 85% 75%, rgba(255, 0, 100, 0.3) 0%, transparent 20%),
-        radial-gradient(circle at 45% 15%, rgba(0, 255, 150, 0.3) 0%, transparent 20%),
-        radial-gradient(circle at 75% 45%, rgba(100, 150, 255, 0.3) 0%, transparent 20%);
-    background-size: 300px 300px;
-    animation: rotatingChips 25s linear infinite;
-    pointer-events: none;
-    z-index: 1;
-}
-
-@keyframes rotatingChips {
-    0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.1); }
-    100% { transform: rotate(360deg) scale(1); }
+@keyframes sparkle {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-100px); }
 }
 
 #wrapper {
@@ -86,475 +50,258 @@ body::after {
     position: relative;
     width: 100%;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
-/* 🏆 Logo Container - 3D Kristal Efekt */
+/* 🏆 Logo Container */
 .image-container {
-    margin-bottom: 40px;
-    perspective: 1200px;
-    transform-style: preserve-3d;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    text-align: center;
 }
 
 .image-container img {
-    display: block;
     width: 800px;
     height: 240px;
-    border-radius: 20px;
-    box-shadow: 
-        0 20px 60px rgba(0,0,0,0.8),
-        0 0 40px rgba(255,215,0,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.2);
-    transform: rotateX(10deg) rotateY(-5deg) translateZ(50px);
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    filter: 
-        drop-shadow(0 25px 50px rgba(0,0,0,0.5))
-        brightness(1.1)
-        contrast(1.2);
+    max-width: 90%;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    transition: all 0.3s ease;
 }
 
 .image-container img:hover {
-    transform: rotateX(0deg) rotateY(0deg) translateZ(80px) scale(1.05);
-    box-shadow: 
-        0 30px 80px rgba(0,0,0,0.9),
-        0 0 60px rgba(255,215,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.3);
-    filter: 
-        drop-shadow(0 35px 70px rgba(0,0,0,0.7))
-        brightness(1.2)
-        contrast(1.3);
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.9);
 }
 
-/* 🎰 Form Container - Casino Slot Machine Style */
+/* 📋 Form Container - Düzgün Layout */
 #codeFormWr {
     position: relative;
     width: 100%;
-    max-width: 900px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
+/* 🎯 Form Styles - Orijinal Renkler Korundu */
 #codeFormCont, #codeFormCont2 {
-    background: 
-        linear-gradient(145deg, 
-            rgba(30, 30, 30, 0.95) 0%,
-            rgba(50, 50, 50, 0.95) 50%,
-            rgba(20, 20, 20, 0.95) 100%);
-    border: 3px solid transparent;
-    border-radius: 25px;
-    padding: 30px 40px;
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    border: 2px solid #333;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
     width: 100%;
-    max-width: 600px;
-    position: relative;
-    backdrop-filter: blur(20px);
-    box-shadow: 
-        0 25px 50px rgba(0,0,0,0.8),
-        inset 0 1px 0 rgba(255,255,255,0.1),
-        inset 0 -1px 0 rgba(0,0,0,0.5);
-    transform: perspective(1000px) rotateX(5deg) translateZ(0);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: hidden;
-}
-
-/* 🌟 Neon Border Efekti */
-#codeFormCont::before, #codeFormCont2::before {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    background: linear-gradient(45deg, 
-        #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, 
-        #feca57, #ff9ff3, #54a0ff, #5f27cd);
-    background-size: 400% 400%;
-    border-radius: 25px;
-    z-index: -1;
-    animation: neonGlow 3s ease-in-out infinite;
-}
-
-@keyframes neonGlow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-#codeFormCont:hover, #codeFormCont2:hover {
-    transform: perspective(1000px) rotateX(0deg) translateZ(20px) translateY(-10px);
-    box-shadow: 
-        0 35px 70px rgba(0,0,0,0.9),
-        inset 0 1px 0 rgba(255,255,255,0.2),
-        inset 0 -1px 0 rgba(0,0,0,0.5),
-        0 0 50px rgba(255,215,0,0.3);
-}
-
-/* 🎯 Form Layout */
-#codeFormCont, #codeFormCont2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+    box-shadow: 
+        0 10px 20px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
 }
 
-/* 💎 3D Labels */
+#codeFormCont:hover, #codeFormCont2:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 30px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+/* 🏷️ Labels - Orijinal Stil */
 #codeFldLbl {
     color: #ffffff;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
-    text-shadow: 
-        0 0 10px rgba(255,255,255,0.5),
-        0 2px 4px rgba(0,0,0,0.8),
-        0 0 20px rgba(255,215,0,0.3);
-    background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transform: perspective(500px) rotateX(10deg);
-    transition: all 0.3s ease;
-    min-width: 180px;
-    text-align: center;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    min-width: 150px;
+    text-align: left;
 }
 
-#codeFldLbl:hover {
-    transform: perspective(500px) rotateX(0deg) scale(1.05);
-    text-shadow: 
-        0 0 15px rgba(255,255,255,0.7),
-        0 2px 4px rgba(0,0,0,0.8),
-        0 0 30px rgba(255,215,0,0.5);
-}
-
-/* 🎰 3D Input Fields - Slot Machine Style */
+/* 📝 Input Fields - Temiz Tasarım */
 #codeFld, #codeFld2 {
-    background: 
-        linear-gradient(145deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
-    border: 3px solid transparent;
-    border-radius: 15px;
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border: 2px solid #ddd;
+    border-radius: 10px;
     color: #000;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    padding: 15px 20px;
-    width: 280px;
-    height: 50px;
+    padding: 12px 15px;
+    width: 250px;
     text-align: center;
-    letter-spacing: 2px;
-    box-shadow: 
-        inset 0 4px 8px rgba(0,0,0,0.2),
-        0 4px 8px rgba(0,0,0,0.1),
-        0 0 0 1px rgba(255,255,255,0.1);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    letter-spacing: 1px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
     outline: none;
-    position: relative;
-}
-
-#codeFld::before, #codeFld2::before {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    background: linear-gradient(45deg, #4ecdc4, #45b7d1, #96ceb4, #4ecdc4);
-    background-size: 300% 300%;
-    border-radius: 15px;
-    z-index: -1;
-    opacity: 0;
-    animation: inputGlow 2s ease-in-out infinite;
-    transition: opacity 0.3s ease;
-}
-
-#codeFld:focus::before, #codeFld2:focus::before {
-    opacity: 1;
-}
-
-@keyframes inputGlow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
 }
 
 #codeFld:focus, #codeFld2:focus {
-    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
-    transform: translateY(-3px) scale(1.02);
+    background: #ffffff;
+    border-color: #4a90e2;
+    transform: translateY(-1px);
     box-shadow: 
-        inset 0 4px 8px rgba(0,0,0,0.1),
-        0 8px 16px rgba(0,0,0,0.2),
-        0 0 30px rgba(74, 144, 226, 0.4);
+        inset 0 2px 4px rgba(0,0,0,0.1),
+        0 0 0 3px rgba(74, 144, 226, 0.2);
 }
 
 #codeFld::placeholder, #codeFld2::placeholder {
     color: #6c757d;
     font-style: italic;
-    letter-spacing: 1px;
 }
 
-/* 🚀 3D Buttons - Premium Casino Style */
+/* 🚀 Buttons - Orijinal Renkler */
 #codeFormCont button, #codeFormCont2 button {
-    background: 
-        linear-gradient(145deg, 
-            #ff6b6b 0%, 
-            #ee5a52 25%, 
-            #ff6b6b 50%, 
-            #ee5a52 75%, 
-            #ff6b6b 100%);
+    background: linear-gradient(145deg, #4a90e2, #357abd);
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
     color: #ffffff;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    height: 50px;
-    width: 100px;
+    height: 45px;
+    width: 80px;
     text-transform: uppercase;
-    letter-spacing: 1px;
     box-shadow: 
-        0 8px 16px rgba(0,0,0,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.3),
-        inset 0 -1px 0 rgba(0,0,0,0.2),
-        0 0 20px rgba(255, 107, 107, 0.3);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: translateZ(0);
-    position: relative;
-    overflow: hidden;
-}
-
-#codeFormCont button::before, #codeFormCont2 button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255,255,255,0.4), 
-        transparent);
-    transition: left 0.5s ease;
-}
-
-#codeFormCont button:hover::before, #codeFormCont2 button:hover::before {
-    left: 100%;
+        0 4px 8px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
 }
 
 #codeFormCont button:hover, #codeFormCont2 button:hover {
-    background: 
-        linear-gradient(145deg, 
-            #ff7979 0%, 
-            #fd79a8 25%, 
-            #ff7979 50%, 
-            #fd79a8 75%, 
-            #ff7979 100%);
-    transform: translateY(-5px) translateZ(20px) scale(1.05);
+    background: linear-gradient(145deg, #5ba0f2, #4080cd);
+    transform: translateY(-2px);
     box-shadow: 
-        0 15px 30px rgba(0,0,0,0.4),
-        inset 0 1px 0 rgba(255,255,255,0.4),
-        inset 0 -1px 0 rgba(0,0,0,0.2),
-        0 0 40px rgba(255, 107, 107, 0.5);
+        0 6px 12px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
 #codeFormCont button:active, #codeFormCont2 button:active {
-    transform: translateY(-2px) translateZ(10px) scale(1.02);
+    transform: translateY(0px);
     box-shadow: 
-        0 8px 16px rgba(0,0,0,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.2),
-        inset 0 -1px 0 rgba(0,0,0,0.3),
-        0 0 20px rgba(255, 107, 107, 0.3);
+        0 2px 4px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.1);
 }
 
-/* 🎰 WhatsApp Section - Casino VIP Style */
+/* 💚 WhatsApp Section - Düzgün Pozisyon */
 .whatsapp-container {
-    position: fixed;
+    position: absolute;
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
     max-width: 1000px;
     text-align: center;
-    perspective: 1000px;
     z-index: 10;
 }
 
 .whatsapp-table {
     width: 100%;
     margin: 0 auto 20px;
-    transform: perspective(800px) rotateX(5deg);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-collapse: separate;
+    border-spacing: 10px;
 }
 
-.whatsapp-table:hover {
-    transform: perspective(800px) rotateX(0deg) translateY(-10px);
+.whatsapp-table td {
+    vertical-align: middle;
 }
 
-/* 💚 3D WhatsApp Button */
+/* 💚 WhatsApp Button - Orijinal Yeşil */
 .whatsapp-btn {
     display: inline-block;
-    background: 
-        linear-gradient(145deg, 
-            #25d366 0%, 
-            #128c7e 25%, 
-            #25d366 50%, 
-            #128c7e 75%, 
-            #25d366 100%);
-    border-radius: 25px;
-    padding: 20px 30px;
-    box-shadow: 
-        0 20px 40px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.3),
-        inset 0 -1px 0 rgba(0,0,0,0.2),
-        0 0 30px rgba(37, 211, 102, 0.4);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: translateZ(0);
+    background: linear-gradient(145deg, #25d366, #128c7e);
+    border-radius: 15px;
+    padding: 15px 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
     text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.whatsapp-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255,255,255,0.3), 
-        transparent);
-    transition: left 0.6s ease;
-}
-
-.whatsapp-btn:hover::before {
-    left: 100%;
 }
 
 .whatsapp-btn:hover {
-    background: 
-        linear-gradient(145deg, 
-            #2ee673 0%, 
-            #1aa05a 25%, 
-            #2ee673 50%, 
-            #1aa05a 75%, 
-            #2ee673 100%);
-    transform: translateY(-8px) translateZ(30px) scale(1.05);
-    box-shadow: 
-        0 30px 60px rgba(0,0,0,0.6),
-        inset 0 1px 0 rgba(255,255,255,0.4),
-        inset 0 -1px 0 rgba(0,0,0,0.2),
-        0 0 50px rgba(37, 211, 102, 0.6);
+    background: linear-gradient(145deg, #2ee673, #1aa05a);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.4);
 }
 
 .whatsapp-btn img {
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
     transition: all 0.3s ease;
 }
 
 .whatsapp-btn:hover img {
-    filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-/* 🎨 Main Text - VIP Style */
+/* 📱 WhatsApp Info Image */
+.whatsapp-table td:last-child img {
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+    transition: all 0.3s ease;
+}
+
+/* 💎 Main Text - VIP Style */
 .main-text {
     color: #ffffff;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
-    padding: 25px 30px;
-    background: 
-        linear-gradient(145deg, 
-            rgba(30, 30, 30, 0.9) 0%,
-            rgba(50, 50, 50, 0.9) 50%,
-            rgba(20, 20, 20, 0.9) 100%);
-    border: 2px solid transparent;
-    border-radius: 20px;
-    backdrop-filter: blur(15px);
-    text-shadow: 
-        0 2px 4px rgba(0,0,0,0.8),
-        0 0 20px rgba(255,255,255,0.1);
-    box-shadow: 
-        0 15px 30px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.1);
-    transform: perspective(600px) rotateX(5deg);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
-}
-
-.main-text::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, 
-        #ffd700, #ffed4e, #ffd700, #ffed4e);
-    background-size: 300% 300%;
-    border-radius: 20px;
-    z-index: -1;
-    animation: textGlow 4s ease-in-out infinite;
-}
-
-@keyframes textGlow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    padding: 20px 25px;
+    background: linear-gradient(145deg, rgba(40, 40, 40, 0.9), rgba(20, 20, 20, 0.9));
+    border: 2px solid #333;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    margin: 0 20px;
 }
 
 .main-text:hover {
-    transform: perspective(600px) rotateX(0deg) translateY(-8px);
-    box-shadow: 
-        0 25px 50px rgba(0,0,0,0.6),
-        inset 0 1px 0 rgba(255,255,255,0.2),
-        0 0 40px rgba(255,215,0,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
 }
 
 /* 📱 Responsive Design */
 @media (max-width: 768px) {
+    .image-container {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    
     .image-container img {
-        width: 90%;
+        width: 95%;
         height: auto;
-        max-width: 600px;
     }
     
     #codeFormCont, #codeFormCont2 {
         flex-direction: column;
         gap: 15px;
-        padding: 25px 20px;
-        margin: 0 20px;
+        padding: 20px;
+        margin: 0 10px 15px;
     }
     
     #codeFld, #codeFld2 {
         width: 100%;
-        max-width: 300px;
+        max-width: 280px;
     }
     
     #codeFldLbl {
         min-width: auto;
-        font-size: 20px;
-    }
-    
-    .main-text {
-        font-size: 20px;
-        padding: 20px;
-        margin: 0 20px;
+        text-align: center;
+        font-size: 18px;
     }
     
     .whatsapp-container {
         bottom: 20px;
         width: 95%;
     }
-}
-
-@media (max-width: 480px) {
-    .image-container img {
-        width: 95%;
-        max-width: 400px;
+    
+    .whatsapp-table {
+        border-spacing: 5px;
     }
     
-    #codeFormCont, #codeFormCont2 {
-        margin: 0 10px;
-        padding: 20px 15px;
+    .whatsapp-table td {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
     }
     
     .main-text {
@@ -564,55 +311,100 @@ body::after {
     }
 }
 
+@media (max-width: 480px) {
+    .image-container img {
+        width: 98%;
+    }
+    
+    #codeFormCont, #codeFormCont2 {
+        margin: 0 5px 15px;
+        padding: 15px;
+    }
+    
+    .main-text {
+        font-size: 16px;
+        padding: 12px;
+        margin: 0 5px;
+    }
+}
+
 /* 🎯 Loading Animation */
 #infoMsgWr {
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.8);
     height: 100%;
     left: 0;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 9999;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #infoMsg {
-    background: 
-        linear-gradient(145deg, 
-            rgba(30, 30, 30, 0.95) 0%,
-            rgba(50, 50, 50, 0.95) 50%,
-            rgba(20, 20, 20, 0.95) 100%);
-    border: 3px solid #ff6b6b;
-    border-radius: 25px;
-    padding: 30px;
-    box-shadow: 
-        0 25px 50px rgba(0,0,0,0.8),
-        0 0 50px rgba(255, 107, 107, 0.3);
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    border: 2px solid #ff4444;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
     text-align: center;
 }
 
 .err #infoMsgStr {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: #fff;
     text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
-/* 🎰 Slot Machine Loading Animation */
-.loading-spinner {
-    width: 60px;
-    height: 60px;
-    border: 4px solid rgba(255,255,255,0.1);
-    border-left: 4px solid #ffd700;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 20px;
+/* 🎰 Hover Effects */
+.hover-lift {
+    transition: all 0.3s ease;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.hover-lift:hover {
+    transform: translateY(-2px);
+}
+
+/* 🌟 Glow Effect */
+.glow-effect {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); }
+    50% { box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 0 15px rgba(74, 144, 226, 0.3); }
+}
+
+/* 🎯 Genel Düzenlemeler */
+.gameFrame {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#sptLnk {
+    bottom: -80px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+#sptLnk a {
+    color: #fff;
+    font: 18px/100% Arial, sans-serif;
+    text-decoration: none;
+}
+
+#sptLnk a:hover {
+    text-decoration: underline;
+}
+
+noscript {
+    height: 100%;
+    width: 100%;
 }
