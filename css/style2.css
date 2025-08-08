@@ -1,0 +1,1124 @@
+@charset "utf-8";
+
+/* 🎰 ULTRA 3D CASINO UI - PREMIUM DESIGN 🎰 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Orbitron', 'Arial', sans-serif;
+    overflow-x: hidden;
+    background: #000;
+}
+
+/* 🌌 Ultra Background */
+body {
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 20, 147, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(0, 191, 255, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, #000428 0%, #004e92 25%, #000428 50%, #004e92 75%, #000428 100%);
+    background-size: 400% 400%;
+    animation: ultraGradient 20s ease infinite;
+    position: relative;
+}
+
+@keyframes ultraGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* 🎰 3D Slot Machine Background */
+.slot-machine-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.slot-reel {
+    width: 80px;
+    height: 400px;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border: 3px solid #444;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.8),
+        inset 0 0 20px rgba(255,255,255,0.1);
+    animation: slotSpin 4s linear infinite;
+    transform-style: preserve-3d;
+}
+
+.slot-reel.reel-1 { animation-duration: 3s; }
+.slot-reel.reel-2 { animation-duration: 4s; }
+.slot-reel.reel-3 { animation-duration: 5s; }
+
+@keyframes slotSpin {
+    0% { transform: rotateX(0deg) translateZ(50px); }
+    100% { transform: rotateX(360deg) translateZ(50px); }
+}
+
+.slot-symbol {
+    width: 100%;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    background: linear-gradient(145deg, #333, #222);
+    border-bottom: 1px solid #555;
+    text-shadow: 0 0 10px currentColor;
+    animation: symbolGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes symbolGlow {
+    0% { text-shadow: 0 0 10px currentColor; }
+    100% { text-shadow: 0 0 20px currentColor, 0 0 30px currentColor; }
+}
+
+/* 🃏 3D Flying Cards */
+.flying-cards {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.card {
+    position: absolute;
+    width: 60px;
+    height: 84px;
+    transform-style: preserve-3d;
+    animation: cardFly 15s linear infinite;
+}
+
+.card-1 { top: 10%; left: 10%; animation-delay: 0s; }
+.card-2 { top: 20%; right: 15%; animation-delay: 3s; }
+.card-3 { bottom: 30%; left: 20%; animation-delay: 6s; }
+.card-4 { bottom: 15%; right: 10%; animation-delay: 9s; }
+
+@keyframes cardFly {
+    0% { 
+        transform: translateY(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translateY(-100px) rotateX(90deg) rotateY(180deg) rotateZ(90deg);
+        opacity: 1;
+    }
+    50% { 
+        transform: translateY(-50px) rotateX(180deg) rotateY(360deg) rotateZ(180deg);
+        opacity: 0.9;
+    }
+    75% { 
+        transform: translateY(-150px) rotateX(270deg) rotateY(540deg) rotateZ(270deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateY(0px) rotateX(360deg) rotateY(720deg) rotateZ(360deg);
+        opacity: 0.8;
+    }
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #fff, #f0f0f0);
+    border: 2px solid #333;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    backface-visibility: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.card-back {
+    background: linear-gradient(145deg, #8B0000, #DC143C);
+    transform: rotateY(180deg);
+}
+
+/* 💎 3D Casino Chips */
+.casino-chips {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.chip {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 
+        0 10px 20px rgba(0,0,0,0.5),
+        inset 0 0 20px rgba(255,255,255,0.3);
+    animation: chipSpin 8s linear infinite;
+    transform-style: preserve-3d;
+}
+
+.chip-red { 
+    background: radial-gradient(circle, #ff4444, #cc0000);
+    top: 15%; left: 80%; 
+    animation-delay: 0s;
+}
+.chip-blue { 
+    background: radial-gradient(circle, #4444ff, #0000cc);
+    top: 60%; left: 5%; 
+    animation-delay: 1.6s;
+}
+.chip-green { 
+    background: radial-gradient(circle, #44ff44, #00cc00);
+    top: 80%; right: 20%; 
+    animation-delay: 3.2s;
+}
+.chip-gold { 
+    background: radial-gradient(circle, #ffd700, #b8860b);
+    top: 30%; right: 5%; 
+    animation-delay: 4.8s;
+}
+.chip-purple { 
+    background: radial-gradient(circle, #8a2be2, #4b0082);
+    bottom: 10%; left: 30%; 
+    animation-delay: 6.4s;
+}
+
+@keyframes chipSpin {
+    0% { 
+        transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
+    }
+    25% { 
+        transform: rotateX(90deg) rotateY(90deg) translateZ(30px);
+    }
+    50% { 
+        transform: rotateX(180deg) rotateY(180deg) translateZ(0px);
+    }
+    75% { 
+        transform: rotateX(270deg) rotateY(270deg) translateZ(30px);
+    }
+    100% { 
+        transform: rotateX(360deg) rotateY(360deg) translateZ(0px);
+    }
+}
+
+/* 🌟 Particle System */
+.particle-system {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #fff, transparent);
+    border-radius: 50%;
+    animation: particleFloat 6s linear infinite;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 0.6s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 1.2s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 1.8s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 2.4s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 3s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 3.6s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 4.2s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 4.8s; }
+.particle:nth-child(10) { left: 95%; animation-delay: 5.4s; }
+
+@keyframes particleFloat {
+    0% { 
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% { 
+        opacity: 1;
+        transform: translateY(90vh) scale(1);
+    }
+    90% { 
+        opacity: 1;
+        transform: translateY(10vh) scale(1);
+    }
+    100% { 
+        transform: translateY(0vh) scale(0);
+        opacity: 0;
+    }
+}
+
+/* 🎯 Main Wrapper */
+#wrapper {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* 🏆 Hologram Logo */
+.hologram-container {
+    margin-bottom: 50px;
+    perspective: 1500px;
+    transform-style: preserve-3d;
+}
+
+.hologram-logo {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: hologramFloat 6s ease-in-out infinite;
+}
+
+@keyframes hologramFloat {
+    0%, 100% { 
+        transform: rotateX(5deg) rotateY(-5deg) translateZ(0px);
+    }
+    50% { 
+        transform: rotateX(-5deg) rotateY(5deg) translateZ(30px);
+    }
+}
+
+.logo-3d {
+    width: 700px;
+    height: 210px;
+    max-width: 90vw;
+    border-radius: 20px;
+    box-shadow: 
+        0 30px 60px rgba(0,0,0,0.8),
+        0 0 50px rgba(0, 191, 255, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    filter: 
+        drop-shadow(0 20px 40px rgba(0,0,0,0.6))
+        brightness(1.2)
+        contrast(1.3);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-3d:hover {
+    transform: scale(1.05) rotateX(0deg) rotateY(0deg);
+    box-shadow: 
+        0 40px 80px rgba(0,0,0,0.9),
+        0 0 80px rgba(0, 191, 255, 0.5),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.hologram-effect {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, 
+        transparent, 
+        rgba(0, 191, 255, 0.1), 
+        transparent, 
+        rgba(138, 43, 226, 0.1), 
+        transparent);
+    background-size: 200% 200%;
+    border-radius: 25px;
+    animation: hologramScan 3s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes hologramScan {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 200%; }
+}
+
+.laser-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(90deg, rgba(0, 191, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(0, 191, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border-radius: 20px;
+    animation: gridPulse 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes gridPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+}
+
+/* 🎯 Forms Container */
+#codeFormWr {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 100px;
+}
+
+/* 🎰 Ultra 3D Form Container */
+.form-container {
+    position: relative;
+    background: 
+        linear-gradient(145deg, 
+            rgba(20, 20, 40, 0.9) 0%,
+            rgba(40, 20, 60, 0.9) 50%,
+            rgba(20, 20, 40, 0.9) 100%);
+    border: 2px solid transparent;
+    border-radius: 25px;
+    padding: 40px;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 30px 60px rgba(0,0,0,0.8),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    transform: perspective(1000px) rotateX(5deg) translateZ(0);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 25px;
+    z-index: -1;
+    animation: neonBorder 4s linear infinite;
+}
+
+.neon-blue::before {
+    background: linear-gradient(45deg, 
+        #00bfff, #1e90ff, #4169e1, #0000ff, 
+        #00bfff, #1e90ff, #4169e1, #0000ff);
+    background-size: 400% 400%;
+}
+
+.neon-purple::before {
+    background: linear-gradient(45deg, 
+        #8a2be2, #9932cc, #ba55d3, #da70d6, 
+        #8a2be2, #9932cc, #ba55d3, #da70d6);
+    background-size: 400% 400%;
+}
+
+@keyframes neonBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.form-container:hover {
+    transform: perspective(1000px) rotateX(0deg) translateZ(30px) translateY(-10px);
+    box-shadow: 
+        0 50px 100px rgba(0,0,0,0.9),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.form-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 191, 255, 0.1), transparent);
+    transform: translate(-50%, -50%);
+    animation: formGlow 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.neon-purple .form-glow {
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.1), transparent);
+}
+
+@keyframes formGlow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+}
+
+/* 🎯 Form Layout */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.form-icon {
+    font-size: 32px;
+    filter: drop-shadow(0 0 10px currentColor);
+    animation: iconPulse 3s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* 🌟 Neon Labels */
+.neon-label {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 
+        0 0 10px currentColor,
+        0 0 20px currentColor,
+        0 0 30px currentColor;
+    background: linear-gradient(45deg, #00bfff, #1e90ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: neonText 3s ease-in-out infinite;
+}
+
+.neon-purple .neon-label {
+    background: linear-gradient(45deg, #8a2be2, #da70d6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes neonText {
+    0%, 100% { 
+        text-shadow: 
+            0 0 10px currentColor,
+            0 0 20px currentColor,
+            0 0 30px currentColor;
+    }
+    50% { 
+        text-shadow: 
+            0 0 20px currentColor,
+            0 0 30px currentColor,
+            0 0 40px currentColor;
+    }
+}
+
+/* 🎯 Input Container */
+.input-container {
+    position: relative;
+}
+
+/* 🎰 Cyber Input Fields */
+.cyber-input {
+    width: 100%;
+    background: 
+        linear-gradient(145deg, 
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(240, 240, 240, 0.95) 100%);
+    border: 3px solid transparent;
+    border-radius: 15px;
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 18px 25px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow: 
+        inset 0 4px 8px rgba(0,0,0,0.2),
+        0 8px 16px rgba(0,0,0,0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    outline: none;
+    position: relative;
+    z-index: 2;
+}
+
+.cyber-input::placeholder {
+    color: #666;
+    font-style: italic;
+    letter-spacing: 1px;
+    text-transform: none;
+}
+
+.cyber-input:focus {
+    background: 
+        linear-gradient(145deg, 
+            rgba(255, 255, 255, 1) 0%,
+            rgba(248, 249, 250, 1) 100%);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        inset 0 4px 8px rgba(0,0,0,0.1),
+        0 15px 30px rgba(0,0,0,0.4),
+        0 0 50px rgba(0, 191, 255, 0.5);
+}
+
+.input-glow {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, 
+        #00bfff, #1e90ff, #4169e1, #0000ff);
+    background-size: 300% 300%;
+    border-radius: 15px;
+    z-index: 1;
+    opacity: 0;
+    animation: inputGlow 3s ease-in-out infinite;
+    transition: opacity 0.3s ease;
+}
+
+.neon-purple .input-glow {
+    background: linear-gradient(45deg, 
+        #8a2be2, #9932cc, #ba55d3, #da70d6);
+    background-size: 300% 300%;
+}
+
+.cyber-input:focus + .input-glow {
+    opacity: 1;
+}
+
+@keyframes inputGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* 🚀 Cyber Buttons */
+.cyber-button {
+    background: 
+        linear-gradient(145deg, 
+            #00bfff 0%, 
+            #1e90ff 25%, 
+            #4169e1 50%, 
+            #0000ff 75%, 
+            #00bfff 100%);
+    border: none;
+    border-radius: 15px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    height: 60px;
+    padding: 0 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 20px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.3),
+        0 0 30px rgba(0, 191, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateZ(0);
+}
+
+.purple-button {
+    background: 
+        linear-gradient(145deg, 
+            #8a2be2 0%, 
+            #9932cc 25%, 
+            #ba55d3 50%, 
+            #da70d6 75%, 
+            #8a2be2 100%);
+    box-shadow: 
+        0 10px 20px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.3),
+        0 0 30px rgba(138, 43, 226, 0.3);
+}
+
+.cyber-button:hover {
+    transform: translateY(-5px) translateZ(20px) scale(1.05);
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.4),
+        0 0 50px rgba(0, 191, 255, 0.5);
+}
+
+.purple-button:hover {
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.4),
+        0 0 50px rgba(138, 43, 226, 0.5);
+}
+
+.cyber-button:active {
+    transform: translateY(-2px) translateZ(10px) scale(1.02);
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.button-particles {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255,255,255,0.4), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.cyber-button:hover .button-particles {
+    left: 100%;
+}
+
+/* 💚 Ultra WhatsApp Section */
+.whatsapp-ultra {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: 
+        linear-gradient(180deg, 
+            transparent 0%, 
+            rgba(0, 0, 0, 0.8) 50%, 
+            rgba(0, 0, 0, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    padding: 30px 20px;
+}
+
+.whatsapp-3d-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.whatsapp-hologram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    perspective: 1000px;
+}
+
+.whatsapp-ultra-btn {
+    position: relative;
+    display: inline-block;
+    background: 
+        linear-gradient(145deg, 
+            #25d366 0%, 
+            #128c7e 25%, 
+            #25d366 50%, 
+            #128c7e 75%, 
+            #25d366 100%);
+    border-radius: 20px;
+    padding: 20px 25px;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.3),
+        0 0 40px rgba(37, 211, 102, 0.4);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateZ(0);
+    animation: whatsappFloat 4s ease-in-out infinite;
+}
+
+@keyframes whatsappFloat {
+    0%, 100% { transform: translateY(0px) rotateX(0deg); }
+    50% { transform: translateY(-10px) rotateX(5deg); }
+}
+
+.whatsapp-ultra-btn:hover {
+    transform: translateY(-10px) translateZ(30px) scale(1.1);
+    box-shadow: 
+        0 30px 60px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255,255,255,0.4),
+        0 0 60px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-icon img {
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+    transition: all 0.3s ease;
+}
+
+.whatsapp-ultra-btn:hover .whatsapp-icon img {
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
+    transform: scale(1.05);
+}
+
+.whatsapp-glow {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, 
+        #25d366, #128c7e, #25d366, #128c7e);
+    background-size: 300% 300%;
+    border-radius: 25px;
+    z-index: -1;
+    animation: whatsappGlow 3s ease-in-out infinite;
+}
+
+@keyframes whatsappGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.whatsapp-info {
+    perspective: 800px;
+}
+
+.info-3d {
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
+    transition: all 0.4s ease;
+    animation: infoFloat 5s ease-in-out infinite;
+}
+
+@keyframes infoFloat {
+    0%, 100% { transform: rotateY(0deg) translateZ(0px); }
+    50% { transform: rotateY(5deg) translateZ(20px); }
+}
+
+/* 💎 VIP Message */
+.vip-message {
+    position: relative;
+    text-align: center;
+}
+
+.message-hologram {
+    background: 
+        linear-gradient(145deg, 
+            rgba(40, 40, 60, 0.9) 0%,
+            rgba(60, 40, 80, 0.9) 50%,
+            rgba(40, 40, 60, 0.9) 100%);
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 25px;
+    backdrop-filter: blur(15px);
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.message-hologram::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        #ffd700, #ffed4e, #ffd700, #ffed4e);
+    background-size: 300% 300%;
+    border-radius: 20px;
+    z-index: -1;
+    animation: messageGlow 4s ease-in-out infinite;
+}
+
+@keyframes messageGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.message-header {
+    color: #ffd700;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-shadow: 
+        0 0 10px #ffd700,
+        0 0 20px #ffd700,
+        0 2px 4px rgba(0,0,0,0.8);
+    animation: headerPulse 3s ease-in-out infinite;
+}
+
+@keyframes headerPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.message-body {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.message-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255,215,0,0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,215,0,0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255,215,0,0.3), transparent);
+    background-repeat: repeat;
+    background-size: 100px 50px;
+    animation: messageParticles 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes messageParticles {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-50px); }
+}
+
+/* 🎯 Cyber Alert System */
+.cyber-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background: 
+        linear-gradient(145deg, 
+            rgba(40, 20, 20, 0.95) 0%,
+            rgba(60, 30, 30, 0.95) 50%,
+            rgba(40, 20, 20, 0.95) 100%);
+    border: 3px solid #ff4444;
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 30px 60px rgba(0,0,0,0.8),
+        0 0 50px rgba(255, 68, 68, 0.3);
+    animation: alertPulse 2s ease-in-out infinite;
+}
+
+@keyframes alertPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+.alert-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.alert-icon {
+    font-size: 24px;
+    animation: iconSpin 2s linear infinite;
+}
+
+@keyframes iconSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.alert-close {
+    background: #ff4444;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+}
+
+.alert-close:hover {
+    background: #ff6666;
+    transform: scale(1.1);
+}
+
+/* 🎰 Cyber Loading */
+.cyber-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-content {
+    text-align: center;
+    color: #fff;
+}
+
+.loading-spinner {
+    width: 80px;
+    height: 80px;
+    border: 4px solid rgba(0, 191, 255, 0.2);
+    border-left: 4px solid #00bfff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 30px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px #00bfff;
+    animation: textPulse 2s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.loading-bar {
+    width: 300px;
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.loading-progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #00bfff, #1e90ff);
+    border-radius: 3px;
+    animation: loadingProgress 2s ease-in-out infinite;
+}
+
+@keyframes loadingProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+    .logo-3d {
+        width: 90vw;
+        height: auto;
+    }
+    
+    #codeFormWr {
+        padding: 0 10px;
+        gap: 30px;
+    }
+    
+    .form-container {
+        padding: 25px 20px;
+    }
+    
+    .neon-label {
+        font-size: 18px;
+    }
+    
+    .cyber-input {
+        font-size: 16px;
+        padding: 15px 20px;
+    }
+    
+    .cyber-button {
+        height: 50px;
+        font-size: 16px;
+    }
+    
+    .whatsapp-hologram {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .message-header {
+        font-size: 16px;
+    }
+    
+    .message-body {
+        font-size: 14px;
+    }
+    
+    .slot-reel {
+        width: 60px;
+        height: 300px;
+    }
+    
+    .slot-symbol {
+        font-size: 30px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 20px 15px;
+    }
+    
+    .neon-label {
+        font-size: 16px;
+    }
+    
+    .cyber-input {
+        font-size: 14px;
+        padding: 12px 15px;
+    }
+    
+    .cyber-button {
+        height: 45px;
+        font-size: 14px;
+    }
+    
+    .whatsapp-ultra {
+        padding: 20px 10px;
+    }
+    
+    .message-header {
+        font-size: 14px;
+    }
+    
+    .message-body {
+        font-size: 12px;
+    }
+}
