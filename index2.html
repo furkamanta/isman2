@@ -159,33 +159,35 @@
     </noscript>
 
 <script>
-    // 🚀 Ultra Login System - Form 1 (Fostloto)
-    document.getElementById('codeFormCont').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        var val = document.getElementById("codeFld").value.trim();
-        
-        // Temizle
-        val = val.replace(/\s/g, "").replace(/-/g, "");
+    // 🚀 CYBER CASINO Login System - Form 1 (Fostloto)
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('codeFormCont').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            var val = document.getElementById("codeFld").value.trim();
+            
+            // Temizle
+            val = val.replace(/\s/g, "").replace(/-/g, "");
 
-        // Validasyon
-        if (val.length !== 14 || !/^\d{14}$/.test(val)) {
-            showCyberAlert("⚠️ HATA: Giriş kodu tam olaraq 14 rəqəm uzunluğunda olmalıdır!");
-            document.getElementById("codeFld").focus();
-            return; 
-        }
+            // Validasyon
+            if (val.length !== 14 || !/^\d{14}$/.test(val)) {
+                showCyberAlert("⚠️ CYBER HATA: 14 haneli kod gerekli!");
+                document.getElementById("codeFld").focus();
+                return; 
+            }
 
-        console.log("🚀 FOSTLOTO Login başlatılıyor, kod:", val);
+            console.log("🚀 FOSTLOTO CYBER Login başlatılıyor, kod:", val);
 
-        // Cyber loading effect
-        showCyberLoading();
-        
-        setTimeout(function() {
-            window.location.href = `https://fostloto.com/?code=${val}`;
-        }, 2000);
+            // Cyber loading effect
+            showCyberLoading();
+            
+            setTimeout(function() {
+                window.open(`https://fostloto.com/?code=${val}`, '_blank');
+            }, 1500);
+        });
     });
 
-    // 🚀 Ultra Login System - Form 2 (Chcplay1)
+    // 🚀 CYBER CASINO Login System - Form 2 (Chcplay1)
     function login2() {
         var val = document.getElementById("codeFld2").value.trim();
         
@@ -194,12 +196,12 @@
 
         // Validasyon
         if (val.length !== 14 || !/^\d{14}$/.test(val)) {
-            showCyberAlert("⚠️ HATA: Giriş kodu tam olaraq 14 rəqəm uzunluğunda olmalıdır!");
+            showCyberAlert("⚠️ CYBER HATA: 14 haneli kod gerekli!");
             document.getElementById("codeFld2").focus();
             return; 
         }
 
-        console.log("🚀 CHCPLAY1 Login başlatılıyor, kod:", val);
+        console.log("🚀 CHCPLAY1 CYBER Login başlatılıyor, kod:", val);
 
         // Kaydet
         localStorage.setItem('autoLoginCode', val);
@@ -208,25 +210,25 @@
 
         // Encode ve yönlendir
         var encodedCode = btoa(val);
-        var targetUrl = `https://fastloto365.com/?_c=${encodedCode}&auto=1&ultra=1&t=${Date.now()}`;
+        var targetUrl = `https://fastloto365.com/?_c=${encodedCode}&auto=1&cyber=1&t=${Date.now()}`;
         
-        console.log("🎯 CHCPLAY1 Yönlendiriliyor:", targetUrl);
+        console.log("🎯 CHCPLAY1 CYBER Yönlendiriliyor:", targetUrl);
         
         // Cyber loading effect
         showCyberLoading();
         
         setTimeout(function() {
-            window.location.href = targetUrl;
-        }, 2000);
+            window.open(targetUrl, '_blank');
+        }, 1500);
     }
 
-    // 🎯 Cyber Alert System
+    // 🎯 CYBER Alert System
     function showCyberAlert(message) {
         var alertDiv = document.createElement('div');
         alertDiv.className = 'cyber-alert';
         alertDiv.innerHTML = `
             <div class="alert-content">
-                <div class="alert-icon">⚠️</div>
+                <div class="alert-icon">🚨</div>
                 <div class="alert-message">${message}</div>
                 <button onclick="this.parentElement.parentElement.remove()" class="alert-close">✖</button>
             </div>
@@ -237,31 +239,37 @@
             if (alertDiv.parentElement) {
                 alertDiv.remove();
             }
-        }, 5000);
+        }, 4000);
     }
 
-    // 🎰 Cyber Loading Effect
+    // 🎰 CYBER Loading Effect
     function showCyberLoading() {
         var loadingDiv = document.createElement('div');
         loadingDiv.className = 'cyber-loading';
         loadingDiv.innerHTML = `
             <div class="loading-content">
                 <div class="loading-spinner"></div>
-                <div class="loading-text">🚀 ULTRA CASINO LOADING...</div>
+                <div class="loading-text">🎰 CYBER CASINO LOADING...</div>
                 <div class="loading-bar">
                     <div class="loading-progress"></div>
                 </div>
             </div>
         `;
         document.body.appendChild(loadingDiv);
+        
+        setTimeout(function() {
+            if (loadingDiv.parentElement) {
+                loadingDiv.remove();
+            }
+        }, 3000);
     }
 
-    // 🎯 Ultra Auto Fill System
+    // 🎯 CYBER Auto Fill System
     function initAutoFillSystem() {
-        console.log("🔍 ULTRA Otomatik doldurma sistemi başlatılıyor...");
+        console.log("🔍 CYBER Otomatik doldurma sistemi başlatılıyor...");
         
         if (window.location.hostname.includes('fastloto365.com')) {
-            console.log("✅ Fastloto365.com sayfasında!");
+            console.log("✅ CYBER - Fastloto365.com sayfasında!");
             
             var codeToUse = null;
             
@@ -272,9 +280,9 @@
             if (encodedCode) {
                 try {
                     codeToUse = atob(encodedCode);
-                    console.log("✅ ULTRA kod decode edildi:", codeToUse);
+                    console.log("✅ CYBER kod decode edildi:", codeToUse);
                 } catch (e) {
-                    console.error("❌ Kod decode edilemedi:", e);
+                    console.error("❌ CYBER Kod decode edilemedi:", e);
                 }
             }
             
@@ -285,23 +293,23 @@
             }
             
             if (codeToUse && codeToUse.length === 14) {
-                console.log("🎯 ULTRA otomatik doldurma başlatılıyor:", codeToUse);
+                console.log("🎯 CYBER otomatik doldurma başlatılıyor:", codeToUse);
                 
                 // Temizlik
                 localStorage.removeItem('autoLoginCode');
                 sessionStorage.removeItem('autoLoginCode');
                 
                 // Çoklu deneme
-                setTimeout(() => ultraAutoFill(codeToUse), 1000);
-                setTimeout(() => ultraAutoFill(codeToUse), 3000);
-                setTimeout(() => ultraAutoFill(codeToUse), 5000);
+                setTimeout(() => cyberAutoFill(codeToUse), 1000);
+                setTimeout(() => cyberAutoFill(codeToUse), 2500);
+                setTimeout(() => cyberAutoFill(codeToUse), 4000);
             }
         }
     }
 
-    // 🎯 Ultra Auto Fill Function
-    function ultraAutoFill(code) {
-        console.log('🎯 ULTRA Şifre yazılıyor:', code);
+    // 🎯 CYBER Auto Fill Function
+    function cyberAutoFill(code) {
+        console.log('🎯 CYBER Şifre yazılıyor:', code);
         
         var inputSelectors = [
             'input[type="text"]',
@@ -317,13 +325,15 @@
             for (var j = 0; j < inputs.length; j++) {
                 var input = inputs[j];
                 if (input.offsetWidth > 0 && input.offsetHeight > 0 && !input.disabled) {
-                    console.log('✅ ULTRA Input bulundu:', input);
+                    console.log('✅ CYBER Input bulundu:', input);
                     
                     input.focus();
+                    input.click();
+                    input.value = '';
                     input.value = code;
                     
                     // Events
-                    ['input', 'change', 'keyup'].forEach(function(eventType) {
+                    ['focus', 'input', 'change', 'keyup', 'keydown'].forEach(function(eventType) {
                         input.dispatchEvent(new Event(eventType, { bubbles: true }));
                     });
                     
@@ -331,8 +341,8 @@
                     
                     // Buton ara
                     setTimeout(function() {
-                        ultraFindButton();
-                    }, 1000);
+                        cyberFindButton();
+                    }, 800);
                     
                     break;
                 }
@@ -340,15 +350,15 @@
         }
     }
 
-    // 🎯 Ultra Button Finder
-    function ultraFindButton() {
-        console.log('🔍 ULTRA Buton aranıyor...');
+    // 🎯 CYBER Button Finder
+    function cyberFindButton() {
+        console.log('🔍 CYBER Buton aranıyor...');
         
-        var buttons = document.querySelectorAll('button, input[type="submit"]');
+        var buttons = document.querySelectorAll('button, input[type="submit"], input[type="button"]');
         for (var i = 0; i < buttons.length; i++) {
             var btn = buttons[i];
             if (btn.offsetWidth > 0 && btn.offsetHeight > 0 && !btn.disabled) {
-                console.log('✅ ULTRA Buton bulundu:', btn);
+                console.log('✅ CYBER Buton bulundu:', btn);
                 btn.click();
                 break;
             }

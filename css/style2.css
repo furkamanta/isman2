@@ -13,18 +13,75 @@ html, body {
     font-family: 'Orbitron', 'Arial', sans-serif;
     overflow-x: hidden;
     background: #000;
+    position: relative;
 }
 
-/* 🌌 Siyah-Mavi Ultra Background */
+/* 🌐 Cyber Grid Overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 191, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 191, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+    animation: gridPulse 8s ease-in-out infinite;
+}
+
+/* 📡 Cyber Scan Lines */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        transparent 0%,
+        rgba(0, 191, 255, 0.02) 50%,
+        transparent 100%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+    animation: scanLines 2s linear infinite;
+}
+
+@keyframes scanLines {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100vh; }
+}
+
+/* 🌌 CYBER CASINO - Mavi-Siyah Ultra Background */
 body {
     background: 
-        radial-gradient(circle at 20% 80%, rgba(0, 100, 200, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 150, 255, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(0, 191, 255, 0.2) 0%, transparent 50%),
-        linear-gradient(135deg, #000000 0%, #001122 25%, #000000 50%, #001133 75%, #000000 100%);
-    background-size: 400% 400%;
-    animation: ultraGradient 20s ease infinite;
+        radial-gradient(circle at 20% 80%, rgba(0, 150, 255, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(0, 100, 255, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 40% 40%, rgba(0, 191, 255, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 60% 60%, rgba(30, 144, 255, 0.2) 0%, transparent 60%),
+        linear-gradient(135deg, 
+            #000000 0%, 
+            #001133 15%, 
+            #000000 30%, 
+            #002244 45%, 
+            #000000 60%, 
+            #001155 75%, 
+            #000000 100%);
+    background-size: 600% 600%;
+    animation: cyberGradient 25s ease infinite;
     position: relative;
+}
+
+@keyframes cyberGradient {
+    0%, 100% { background-position: 0% 50%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
 }
 
 @keyframes ultraGradient {
@@ -67,8 +124,8 @@ body {
 .slot-reel.reel-3 { animation-duration: 5s; }
 
 @keyframes slotSpin {
-    0% { transform: rotateX(0deg) translateZ(50px); }
-    100% { transform: rotateX(360deg) translateZ(50px); }
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-400px); }
 }
 
 .slot-symbol {
@@ -115,24 +172,16 @@ body {
 
 @keyframes cardFly {
     0% { 
-        transform: translateY(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-        opacity: 0.8;
-    }
-    25% { 
-        transform: translateY(-100px) rotateX(90deg) rotateY(180deg) rotateZ(90deg);
-        opacity: 1;
+        transform: translateY(0px) rotateY(0deg);
+        opacity: 0.7;
     }
     50% { 
-        transform: translateY(-50px) rotateX(180deg) rotateY(360deg) rotateZ(180deg);
-        opacity: 0.9;
-    }
-    75% { 
-        transform: translateY(-150px) rotateX(270deg) rotateY(540deg) rotateZ(270deg);
+        transform: translateY(-80px) rotateY(180deg);
         opacity: 1;
     }
     100% { 
-        transform: translateY(0px) rotateX(360deg) rotateY(720deg) rotateZ(360deg);
-        opacity: 0.8;
+        transform: translateY(0px) rotateY(360deg);
+        opacity: 0.7;
     }
 }
 
@@ -208,19 +257,13 @@ body {
 
 @keyframes chipSpin {
     0% { 
-        transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
-    }
-    25% { 
-        transform: rotateX(90deg) rotateY(90deg) translateZ(30px);
+        transform: rotateZ(0deg) scale(1);
     }
     50% { 
-        transform: rotateX(180deg) rotateY(180deg) translateZ(0px);
-    }
-    75% { 
-        transform: rotateX(270deg) rotateY(270deg) translateZ(30px);
+        transform: rotateZ(180deg) scale(1.1);
     }
     100% { 
-        transform: rotateX(360deg) rotateY(360deg) translateZ(0px);
+        transform: rotateZ(360deg) scale(1);
     }
 }
 
@@ -385,23 +428,25 @@ body {
     margin-bottom: 100px;
 }
 
-/* 🎰 Ultra 3D Form Container */
+/* 🎰 CYBER CASINO Form Container */
 .form-container {
     position: relative;
     background: 
         linear-gradient(145deg, 
-            rgba(20, 20, 40, 0.9) 0%,
-            rgba(40, 20, 60, 0.9) 50%,
-            rgba(20, 20, 40, 0.9) 100%);
+            rgba(0, 10, 30, 0.95) 0%,
+            rgba(0, 20, 50, 0.95) 30%,
+            rgba(0, 15, 40, 0.95) 70%,
+            rgba(0, 10, 30, 0.95) 100%);
     border: 2px solid transparent;
-    border-radius: 25px;
-    padding: 40px;
-    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 35px;
+    backdrop-filter: blur(15px);
     box-shadow: 
-        0 30px 60px rgba(0,0,0,0.8),
-        inset 0 1px 0 rgba(255,255,255,0.1);
-    transform: perspective(1000px) rotateX(5deg) translateZ(0);
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        0 25px 50px rgba(0,0,0,0.9),
+        inset 0 1px 0 rgba(0, 191, 255, 0.2),
+        0 0 30px rgba(0, 100, 255, 0.1);
+    transform: perspective(1000px) rotateX(3deg) translateZ(0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
 }
 
@@ -654,64 +699,67 @@ form {
     left: 100%;
 }
 
-/* 💚 Compact WhatsApp Section */
+/* 💚 Mini WhatsApp Section */
 .whatsapp-compact {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 15;
-    max-width: 300px;
+    bottom: 15px;
+    right: 15px;
+    z-index: 5;
+    max-width: 200px;
 }
 
 .whatsapp-mini-container {
     background: 
         linear-gradient(145deg, 
-            rgba(20, 20, 40, 0.9) 0%,
-            rgba(30, 30, 50, 0.9) 100%);
-    border: 2px solid #00bfff;
-    border-radius: 15px;
-    padding: 15px;
-    backdrop-filter: blur(10px);
+            rgba(0, 20, 40, 0.8) 0%,
+            rgba(0, 30, 60, 0.8) 100%);
+    border: 1px solid #00bfff;
+    border-radius: 10px;
+    padding: 8px;
+    backdrop-filter: blur(5px);
     box-shadow: 
-        0 10px 20px rgba(0,0,0,0.6),
-        0 0 20px rgba(0, 191, 255, 0.2);
+        0 5px 10px rgba(0,0,0,0.4),
+        0 0 10px rgba(0, 191, 255, 0.2);
     text-align: center;
     transition: all 0.3s ease;
+    opacity: 0.8;
 }
 
 .whatsapp-mini-container:hover {
-    transform: translateY(-5px);
+    opacity: 1;
+    transform: translateY(-2px);
     box-shadow: 
-        0 15px 30px rgba(0,0,0,0.7),
-        0 0 30px rgba(0, 191, 255, 0.3);
+        0 8px 15px rgba(0,0,0,0.5),
+        0 0 15px rgba(0, 191, 255, 0.3);
 }
 
 .whatsapp-mini-btn {
     display: inline-block;
     background: 
         linear-gradient(145deg, #25d366, #128c7e);
-    border-radius: 10px;
-    padding: 10px 15px;
+    border-radius: 6px;
+    padding: 6px 10px;
     text-decoration: none;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     box-shadow: 
-        0 5px 10px rgba(0,0,0,0.4),
-        0 0 15px rgba(37, 211, 102, 0.3);
+        0 3px 6px rgba(0,0,0,0.3),
+        0 0 8px rgba(37, 211, 102, 0.2);
     transition: all 0.3s ease;
 }
 
 .whatsapp-mini-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     box-shadow: 
-        0 8px 16px rgba(0,0,0,0.5),
-        0 0 25px rgba(37, 211, 102, 0.5);
+        0 5px 10px rgba(0,0,0,0.4),
+        0 0 12px rgba(37, 211, 102, 0.4);
 }
 
 .mini-message {
     color: #ffffff;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 10px;
+    font-weight: 400;
     text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+    opacity: 0.9;
 }
 
 /* 🎯 Cyber Alert System */
