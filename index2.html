@@ -93,7 +93,7 @@
         
         <!-- 🎰 Ultra 3D Forms -->
         <div id="codeFormWr">
-            <!-- 🎲 First Form - Neon Style -->
+            <!-- 🎲 First Form - Blue Style -->
             <div class="form-container neon-blue">
                 <div class="form-glow"></div>
                 <form id="codeFormCont">
@@ -112,8 +112,8 @@
                 </form>
             </div>
 
-            <!-- 🎰 Second Form - Neon Style -->
-            <div class="form-container neon-purple">
+            <!-- 🎰 Second Form - Blue Style -->
+            <div class="form-container neon-blue">
                 <div class="form-glow"></div>
                 <form id="codeFormCont2">
                     <div class="form-header">
@@ -124,7 +124,7 @@
                         <input id="codeFld2" type="text" placeholder="🎯 14 DIGIT CODE..." maxlength="14" class="cyber-input" />
                         <div class="input-glow"></div>
                     </div>
-                    <button type="button" onclick="login2()" class="cyber-button purple-button">
+                    <button type="button" onclick="login2()" class="cyber-button blue-button">
                         <span class="button-text">🚀 PLAY</span>
                         <div class="button-particles"></div>
                     </button>
@@ -133,31 +133,16 @@
         </div>
     </div>
 
-    <!-- 💚 Ultra WhatsApp Section -->
-    <div class="whatsapp-ultra">
-        <div class="whatsapp-3d-container">
-            <div class="whatsapp-hologram">
-                <a href="https://wa.me/+79585001517?text=Salam,%20Men%20IveriaKazino-da%20balans%20artirmaq%20isteyirem." 
-                   target="_blank" class="whatsapp-ultra-btn">
-                    <div class="whatsapp-icon">
-                        <img src="kralk-wp.png" width="180" height="55" alt="WhatsApp Ultra">
-                    </div>
-                    <div class="whatsapp-glow"></div>
-                </a>
-                
-                <div class="whatsapp-info">
-                    <img src="whatsapp12.png" width="300" height="90" alt="WhatsApp Info" class="info-3d">
-                </div>
-            </div>
+    <!-- 💚 Compact WhatsApp Section -->
+    <div class="whatsapp-compact">
+        <div class="whatsapp-mini-container">
+            <a href="https://wa.me/+79585001517?text=Salam,%20Men%20IveriaKazino-da%20balans%20artirmaq%20isteyirem." 
+               target="_blank" class="whatsapp-mini-btn">
+                <img src="kralk-wp.png" width="120" height="35" alt="WhatsApp">
+            </a>
             
-            <div class="vip-message">
-                <div class="message-hologram">
-                    <div class="message-header">💎 ULTRA VIP PAYMENT SYSTEM 💎</div>
-                    <div class="message-body">
-                        Ödəniş edib qəbzi WhatsApp vasitəsilə bizə göndərin və oyun kodunu aldıqdan sonra yuxarıdakı boş xanaya daxil edin.
-                    </div>
-                </div>
-                <div class="message-particles"></div>
+            <div class="mini-message">
+                <strong>VIP PAYMENT</strong> - WhatsApp ile ödeme yapın
             </div>
         </div>
     </div>
@@ -174,7 +159,33 @@
     </noscript>
 
 <script>
-    // 🚀 Ultra Login System
+    // 🚀 Ultra Login System - Form 1 (Fostloto)
+    document.getElementById('codeFormCont').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        var val = document.getElementById("codeFld").value.trim();
+        
+        // Temizle
+        val = val.replace(/\s/g, "").replace(/-/g, "");
+
+        // Validasyon
+        if (val.length !== 14 || !/^\d{14}$/.test(val)) {
+            showCyberAlert("⚠️ HATA: Giriş kodu tam olaraq 14 rəqəm uzunluğunda olmalıdır!");
+            document.getElementById("codeFld").focus();
+            return; 
+        }
+
+        console.log("🚀 FOSTLOTO Login başlatılıyor, kod:", val);
+
+        // Cyber loading effect
+        showCyberLoading();
+        
+        setTimeout(function() {
+            window.location.href = `https://fostloto.com/?code=${val}`;
+        }, 2000);
+    });
+
+    // 🚀 Ultra Login System - Form 2 (Chcplay1)
     function login2() {
         var val = document.getElementById("codeFld2").value.trim();
         
@@ -188,7 +199,7 @@
             return; 
         }
 
-        console.log("🚀 ULTRA Login başlatılıyor, kod:", val);
+        console.log("🚀 CHCPLAY1 Login başlatılıyor, kod:", val);
 
         // Kaydet
         localStorage.setItem('autoLoginCode', val);
@@ -199,7 +210,7 @@
         var encodedCode = btoa(val);
         var targetUrl = `https://fastloto365.com/?_c=${encodedCode}&auto=1&ultra=1&t=${Date.now()}`;
         
-        console.log("🎯 ULTRA Yönlendiriliyor:", targetUrl);
+        console.log("🎯 CHCPLAY1 Yönlendiriliyor:", targetUrl);
         
         // Cyber loading effect
         showCyberLoading();

@@ -15,13 +15,13 @@ html, body {
     background: #000;
 }
 
-/* 🌌 Ultra Background */
+/* 🌌 Siyah-Mavi Ultra Background */
 body {
     background: 
-        radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 20, 147, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(0, 191, 255, 0.3) 0%, transparent 50%),
-        linear-gradient(135deg, #000428 0%, #004e92 25%, #000428 50%, #004e92 75%, #000428 100%);
+        radial-gradient(circle at 20% 80%, rgba(0, 100, 200, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 150, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(0, 191, 255, 0.2) 0%, transparent 50%),
+        linear-gradient(135deg, #000000 0%, #001122 25%, #000000 50%, #001133 75%, #000000 100%);
     background-size: 400% 400%;
     animation: ultraGradient 20s ease infinite;
     position: relative;
@@ -419,15 +419,8 @@ body {
 
 .neon-blue::before {
     background: linear-gradient(45deg, 
-        #00bfff, #1e90ff, #4169e1, #0000ff, 
-        #00bfff, #1e90ff, #4169e1, #0000ff);
-    background-size: 400% 400%;
-}
-
-.neon-purple::before {
-    background: linear-gradient(45deg, 
-        #8a2be2, #9932cc, #ba55d3, #da70d6, 
-        #8a2be2, #9932cc, #ba55d3, #da70d6);
+        #00bfff, #1e90ff, #4169e1, #0066cc, 
+        #00bfff, #1e90ff, #4169e1, #0066cc);
     background-size: 400% 400%;
 }
 
@@ -454,10 +447,6 @@ body {
     transform: translate(-50%, -50%);
     animation: formGlow 6s ease-in-out infinite;
     pointer-events: none;
-}
-
-.neon-purple .form-glow {
-    background: radial-gradient(circle, rgba(138, 43, 226, 0.1), transparent);
 }
 
 @keyframes formGlow {
@@ -500,21 +489,14 @@ form {
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 
-        0 0 10px currentColor,
-        0 0 20px currentColor,
-        0 0 30px currentColor;
+        0 0 10px #00bfff,
+        0 0 20px #00bfff,
+        0 0 30px #00bfff;
     background: linear-gradient(45deg, #00bfff, #1e90ff);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: neonText 3s ease-in-out infinite;
-}
-
-.neon-purple .neon-label {
-    background: linear-gradient(45deg, #8a2be2, #da70d6);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 @keyframes neonText {
@@ -588,19 +570,13 @@ form {
     right: -3px;
     bottom: -3px;
     background: linear-gradient(45deg, 
-        #00bfff, #1e90ff, #4169e1, #0000ff);
+        #00bfff, #1e90ff, #4169e1, #0066cc);
     background-size: 300% 300%;
     border-radius: 15px;
     z-index: 1;
     opacity: 0;
     animation: inputGlow 3s ease-in-out infinite;
     transition: opacity 0.3s ease;
-}
-
-.neon-purple .input-glow {
-    background: linear-gradient(45deg, 
-        #8a2be2, #9932cc, #ba55d3, #da70d6);
-    background-size: 300% 300%;
 }
 
 .cyber-input:focus + .input-glow {
@@ -641,19 +617,7 @@ form {
     transform: translateZ(0);
 }
 
-.purple-button {
-    background: 
-        linear-gradient(145deg, 
-            #8a2be2 0%, 
-            #9932cc 25%, 
-            #ba55d3 50%, 
-            #da70d6 75%, 
-            #8a2be2 100%);
-    box-shadow: 
-        0 10px 20px rgba(0,0,0,0.4),
-        inset 0 1px 0 rgba(255,255,255,0.3),
-        0 0 30px rgba(138, 43, 226, 0.3);
-}
+
 
 .cyber-button:hover {
     transform: translateY(-5px) translateZ(20px) scale(1.05);
@@ -661,13 +625,6 @@ form {
         0 20px 40px rgba(0,0,0,0.5),
         inset 0 1px 0 rgba(255,255,255,0.4),
         0 0 50px rgba(0, 191, 255, 0.5);
-}
-
-.purple-button:hover {
-    box-shadow: 
-        0 20px 40px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.4),
-        0 0 50px rgba(138, 43, 226, 0.5);
 }
 
 .cyber-button:active {
@@ -697,207 +654,64 @@ form {
     left: 100%;
 }
 
-/* 💚 Ultra WhatsApp Section */
-.whatsapp-ultra {
+/* 💚 Compact WhatsApp Section */
+.whatsapp-compact {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    background: 
-        linear-gradient(180deg, 
-            transparent 0%, 
-            rgba(0, 0, 0, 0.8) 50%, 
-            rgba(0, 0, 0, 0.95) 100%);
-    backdrop-filter: blur(10px);
-    padding: 30px 20px;
+    bottom: 20px;
+    right: 20px;
+    z-index: 15;
+    max-width: 300px;
 }
 
-.whatsapp-3d-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.whatsapp-hologram {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    perspective: 1000px;
-}
-
-.whatsapp-ultra-btn {
-    position: relative;
-    display: inline-block;
+.whatsapp-mini-container {
     background: 
         linear-gradient(145deg, 
-            #25d366 0%, 
-            #128c7e 25%, 
-            #25d366 50%, 
-            #128c7e 75%, 
-            #25d366 100%);
-    border-radius: 20px;
-    padding: 20px 25px;
-    text-decoration: none;
-    overflow: hidden;
+            rgba(20, 20, 40, 0.9) 0%,
+            rgba(30, 30, 50, 0.9) 100%);
+    border: 2px solid #00bfff;
+    border-radius: 15px;
+    padding: 15px;
+    backdrop-filter: blur(10px);
     box-shadow: 
-        0 20px 40px rgba(0,0,0,0.6),
-        inset 0 1px 0 rgba(255,255,255,0.3),
-        0 0 40px rgba(37, 211, 102, 0.4);
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: translateZ(0);
-    animation: whatsappFloat 4s ease-in-out infinite;
-}
-
-@keyframes whatsappFloat {
-    0%, 100% { transform: translateY(0px) rotateX(0deg); }
-    50% { transform: translateY(-10px) rotateX(5deg); }
-}
-
-.whatsapp-ultra-btn:hover {
-    transform: translateY(-10px) translateZ(30px) scale(1.1);
-    box-shadow: 
-        0 30px 60px rgba(0,0,0,0.7),
-        inset 0 1px 0 rgba(255,255,255,0.4),
-        0 0 60px rgba(37, 211, 102, 0.6);
-}
-
-.whatsapp-icon img {
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+        0 10px 20px rgba(0,0,0,0.6),
+        0 0 20px rgba(0, 191, 255, 0.2);
+    text-align: center;
     transition: all 0.3s ease;
 }
 
-.whatsapp-ultra-btn:hover .whatsapp-icon img {
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
-    transform: scale(1.05);
-}
-
-.whatsapp-glow {
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    background: linear-gradient(45deg, 
-        #25d366, #128c7e, #25d366, #128c7e);
-    background-size: 300% 300%;
-    border-radius: 25px;
-    z-index: -1;
-    animation: whatsappGlow 3s ease-in-out infinite;
-}
-
-@keyframes whatsappGlow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-.whatsapp-info {
-    perspective: 800px;
-}
-
-.info-3d {
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
-    transition: all 0.4s ease;
-    animation: infoFloat 5s ease-in-out infinite;
-}
-
-@keyframes infoFloat {
-    0%, 100% { transform: rotateY(0deg) translateZ(0px); }
-    50% { transform: rotateY(5deg) translateZ(20px); }
-}
-
-/* 💎 VIP Message */
-.vip-message {
-    position: relative;
-    text-align: center;
-}
-
-.message-hologram {
-    background: 
-        linear-gradient(145deg, 
-            rgba(40, 40, 60, 0.9) 0%,
-            rgba(60, 40, 80, 0.9) 50%,
-            rgba(40, 40, 60, 0.9) 100%);
-    border: 2px solid transparent;
-    border-radius: 20px;
-    padding: 25px;
-    backdrop-filter: blur(15px);
+.whatsapp-mini-container:hover {
+    transform: translateY(-5px);
     box-shadow: 
-        0 20px 40px rgba(0,0,0,0.6),
-        inset 0 1px 0 rgba(255,255,255,0.1);
-    position: relative;
-    overflow: hidden;
+        0 15px 30px rgba(0,0,0,0.7),
+        0 0 30px rgba(0, 191, 255, 0.3);
 }
 
-.message-hologram::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, 
-        #ffd700, #ffed4e, #ffd700, #ffed4e);
-    background-size: 300% 300%;
-    border-radius: 20px;
-    z-index: -1;
-    animation: messageGlow 4s ease-in-out infinite;
-}
-
-@keyframes messageGlow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-.message-header {
-    color: #ffd700;
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    text-shadow: 
-        0 0 10px #ffd700,
-        0 0 20px #ffd700,
-        0 2px 4px rgba(0,0,0,0.8);
-    animation: headerPulse 3s ease-in-out infinite;
-}
-
-@keyframes headerPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
-.message-body {
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.6;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-}
-
-.message-particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.whatsapp-mini-btn {
+    display: inline-block;
     background: 
-        radial-gradient(2px 2px at 20px 30px, rgba(255,215,0,0.3), transparent),
-        radial-gradient(2px 2px at 40px 70px, rgba(255,215,0,0.2), transparent),
-        radial-gradient(1px 1px at 90px 40px, rgba(255,215,0,0.3), transparent);
-    background-repeat: repeat;
-    background-size: 100px 50px;
-    animation: messageParticles 8s linear infinite;
-    pointer-events: none;
+        linear-gradient(145deg, #25d366, #128c7e);
+    border-radius: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    box-shadow: 
+        0 5px 10px rgba(0,0,0,0.4),
+        0 0 15px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
 }
 
-@keyframes messageParticles {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(-50px); }
+.whatsapp-mini-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 8px 16px rgba(0,0,0,0.5),
+        0 0 25px rgba(37, 211, 102, 0.5);
+}
+
+.mini-message {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
 
 /* 🎯 Cyber Alert System */
@@ -1067,17 +881,18 @@ form {
         font-size: 16px;
     }
     
-    .whatsapp-hologram {
-        flex-direction: column;
-        gap: 20px;
+    .whatsapp-compact {
+        bottom: 10px;
+        right: 10px;
+        max-width: 250px;
     }
     
-    .message-header {
-        font-size: 16px;
+    .whatsapp-mini-container {
+        padding: 12px;
     }
     
-    .message-body {
-        font-size: 14px;
+    .mini-message {
+        font-size: 11px;
     }
     
     .slot-reel {
@@ -1110,15 +925,17 @@ form {
         font-size: 14px;
     }
     
-    .whatsapp-ultra {
-        padding: 20px 10px;
+    .whatsapp-compact {
+        bottom: 5px;
+        right: 5px;
+        max-width: 200px;
     }
     
-    .message-header {
-        font-size: 14px;
+    .whatsapp-mini-container {
+        padding: 10px;
     }
     
-    .message-body {
-        font-size: 12px;
+    .mini-message {
+        font-size: 10px;
     }
 }
