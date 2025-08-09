@@ -186,6 +186,9 @@
         </div>
     </div>
 
+    <!-- 🎉 AZERBAYCANLI KAZANÇ BİLDİRİMLERİ -->
+    <div id="winNotifications" class="win-notifications-container"></div>
+
     <!-- 💚 Compact WhatsApp Section -->
     <div class="whatsapp-compact">
         <div class="whatsapp-mini-container">
@@ -434,6 +437,104 @@
             chip.style.animationDelay = (index * 0.3) + 's';
         });
     }
+
+    // 🇦🇿 AZERBAYCANLI KAZANÇ BİLDİRİMLERİ SİSTEMİ
+    const azerbaijaniNames = [
+        'Əli Məmmədov', 'Leyla Həsənova', 'Rəşad Quliyev', 'Günel Əliyeva',
+        'Elçin Babayev', 'Səbinə Rəhimova', 'Tural Nərimanov', 'Aysel Məhərrəmova',
+        'Fərid Sultanov', 'Nigar Əsgərova', 'Kamran Həsənov', 'Sevil Qəhrəmanova',
+        'Orxan Məmmədli', 'Gülnar Əhmədova', 'Ramin Əlizadə', 'Könül Bayramova',
+        'Elşad Hüseynov', 'Məryəm Cəfərova', 'Vüsal Əkbərov', 'Lalə Mustafayeva',
+        'Ruslan Şərifov', 'Aynur Həmidova', 'Tofiq Vəliyev', 'Şəbnəm Rəsulova',
+        'Cavid Əliyev', 'Ülviyyə Nəsibova', 'Məhəmməd Qasımov', 'Zemfira Əsgərli',
+        'Samir Abdullayev', 'Gülşən Məlikova', 'Elnur Həsənli', 'Səadət Əhmədli',
+        'Rəhman Bayramov', 'Nərgiz Sultanova', 'Əkbər Məmmədov', 'Aida Quliyeva'
+    ];
+
+    const winAmounts = [
+        '150 AZN', '250 AZN', '350 AZN', '500 AZN', '750 AZN', '1000 AZN',
+        '1250 AZN', '1500 AZN', '2000 AZN', '2500 AZN', '3000 AZN', '5000 AZN'
+    ];
+
+    const winMessages = [
+        'depozit olundu! 🎉', 'çıxarış olundu! 💰', 'qazandı! 🎰', 
+        'bonus aldı! 🎁', 'jackpot vurdu! 💎', 'böyük qazanc! 🔥'
+    ];
+
+    let notificationId = 0;
+
+    function createWinNotification() {
+        const container = document.getElementById('winNotifications');
+        if (!container) return;
+
+        // Random seçimler
+        const randomName = azerbaijaniNames[Math.floor(Math.random() * azerbaijaniNames.length)];
+        const randomAmount = winAmounts[Math.floor(Math.random() * winAmounts.length)];
+        const randomMessage = winMessages[Math.floor(Math.random() * winMessages.length)];
+
+        // Bildirim elementi oluştur
+        const notification = document.createElement('div');
+        notification.className = 'win-notification';
+        notification.id = `notification-${notificationId++}`;
+        
+        notification.innerHTML = `
+            <div class="notification-content">
+                <div class="notification-icon">🎰</div>
+                <div class="notification-text">
+                    <div class="notification-name">${randomName}</div>
+                    <div class="notification-amount">${randomAmount} ${randomMessage}</div>
+                </div>
+                <div class="notification-close">×</div>
+            </div>
+        `;
+
+        // Container'a ekle
+        container.appendChild(notification);
+
+        // Animasyon başlat
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 100);
+
+        // 3 saniye sonra kaldır
+        setTimeout(() => {
+            notification.classList.add('hide');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 500);
+        }, 3000);
+
+        // Close butonuna tıklama
+        const closeBtn = notification.querySelector('.notification-close');
+        closeBtn.addEventListener('click', () => {
+            notification.classList.add('hide');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 500);
+        });
+    }
+
+    // Sürekli bildirim oluştur
+    function startWinNotifications() {
+        // İlk bildirim hemen
+        setTimeout(createWinNotification, 2000);
+        
+        // Sonra 5-10 saniye aralıklarla
+        setInterval(() => {
+            const randomDelay = Math.random() * 5000 + 5000; // 5-10 saniye
+            setTimeout(createWinNotification, randomDelay);
+        }, 8000);
+    }
+
+    // Sayfa yüklendiğinde başlat
+    document.addEventListener('DOMContentLoaded', function() {
+        startWinNotifications();
+    });
+
 </script>
 
 </body>
