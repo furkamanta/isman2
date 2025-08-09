@@ -635,6 +635,181 @@ body {
     left: 100%;
 }
 
+/* 📱 3D SOSYAL MEDYA İKONLARI */
+.social-media-3d {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 5;
+    max-width: 300px;
+}
+
+.social-container {
+    background: 
+        linear-gradient(145deg, 
+            #2a2a2a 0%,
+            #1a1a1a 25%,
+            #0f0f0f 50%,
+            #1a1a1a 75%,
+            #2a2a2a 100%);
+    border: 2px solid #4a90e2;
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 15px 30px rgba(0,0,0,0.8),
+        0 8px 16px rgba(0,0,0,0.6),
+        inset 0 2px 4px rgba(255,255,255,0.1),
+        inset 0 -2px 4px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+.social-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.9),
+        0 10px 20px rgba(0,0,0,0.7),
+        inset 0 2px 4px rgba(255,255,255,0.15),
+        inset 0 -2px 4px rgba(0,0,0,0.6);
+}
+
+.social-title {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 
+        0 2px 4px rgba(0,0,0,0.8),
+        0 0 10px #4a90e2;
+    background: linear-gradient(45deg, #4a90e2, #357abd);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.icon-3d {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: socialIcon3D 6s ease-in-out infinite;
+    margin-bottom: 8px;
+}
+
+@keyframes socialIcon3D {
+    0%, 100% { 
+        transform: rotateY(0deg) rotateX(0deg) translateZ(0px);
+    }
+    50% { 
+        transform: rotateY(180deg) rotateX(10deg) translateZ(10px);
+    }
+}
+
+.icon-face {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    backface-visibility: hidden;
+    box-shadow: 
+        0 8px 16px rgba(0,0,0,0.6),
+        inset 0 2px 4px rgba(255,255,255,0.2),
+        inset 0 -2px 4px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.icon-front {
+    background: 
+        linear-gradient(145deg, 
+            #4a90e2 0%,
+            #357abd 50%,
+            #2e6da4 100%);
+    border: 2px solid #5ba0f2;
+    transform: translateZ(25px);
+}
+
+.icon-back {
+    background: 
+        linear-gradient(145deg, 
+            #2e6da4 0%,
+            #1f4e79 50%,
+            #357abd 100%);
+    border: 2px solid #4a90e2;
+    transform: rotateY(180deg) translateZ(25px);
+}
+
+.icon-label {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+/* Platform Specific Colors */
+.telegram-icon:hover .icon-front {
+    background: linear-gradient(145deg, #0088cc, #006699, #004466);
+    box-shadow: 
+        0 10px 20px rgba(0,0,0,0.7),
+        inset 0 2px 4px rgba(255,255,255,0.3),
+        0 0 20px rgba(0, 136, 204, 0.4);
+}
+
+.instagram-icon:hover .icon-front {
+    background: linear-gradient(145deg, #e4405f, #c13584, #833ab4);
+    box-shadow: 
+        0 10px 20px rgba(0,0,0,0.7),
+        inset 0 2px 4px rgba(255,255,255,0.3),
+        0 0 20px rgba(228, 64, 95, 0.4);
+}
+
+.tiktok-icon:hover .icon-front {
+    background: linear-gradient(145deg, #ff0050, #00f2ea, #ff0050);
+    box-shadow: 
+        0 10px 20px rgba(0,0,0,0.7),
+        inset 0 2px 4px rgba(255,255,255,0.3),
+        0 0 20px rgba(255, 0, 80, 0.4);
+}
+
+.social-icon:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+.social-icon:hover .icon-3d {
+    animation-duration: 3s;
+}
+
+.social-icon:hover .icon-label {
+    opacity: 1;
+    color: #4a90e2;
+    text-shadow: 
+        0 1px 2px rgba(0,0,0,0.8),
+        0 0 10px #4a90e2;
+}
+
 /* 💚 Mini WhatsApp Section */
 .whatsapp-compact {
     position: fixed;
@@ -852,6 +1027,41 @@ body {
         font-size: 16px;
     }
     
+    /* Sosyal Medya Mobil */
+    .social-media-3d {
+        bottom: 10px;
+        left: 10px;
+        max-width: 280px;
+    }
+    
+    .social-container {
+        padding: 15px;
+    }
+    
+    .social-title {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+    
+    .social-icons {
+        gap: 10px;
+    }
+    
+    .icon-3d {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .icon-face {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    
+    .icon-label {
+        font-size: 11px;
+    }
+    
     .whatsapp-compact {
         bottom: 10px;
         right: 10px;
@@ -879,6 +1089,41 @@ body {
     .cyber-input {
         height: 45px;
         font-size: 14px;
+    }
+    
+    /* Sosyal Medya Küçük Ekran */
+    .social-media-3d {
+        bottom: 5px;
+        left: 5px;
+        max-width: 250px;
+    }
+    
+    .social-container {
+        padding: 12px;
+    }
+    
+    .social-title {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    
+    .social-icons {
+        gap: 8px;
+    }
+    
+    .icon-3d {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .icon-face {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .icon-label {
+        font-size: 10px;
     }
     
     .whatsapp-compact {
