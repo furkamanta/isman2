@@ -62,7 +62,8 @@ body::before {
 .image-container img {
     width: 800px;
     height: 240px;
-    max-width: 90%;
+    max-width: 95%;
+    min-width: 300px;
     border-radius: 15px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.8);
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
@@ -266,8 +267,10 @@ body::before {
     }
     
     .image-container img {
-        width: 95%;
-        height: auto;
+        width: 100% !important;
+        height: auto !important;
+        min-width: 400px !important;
+        max-width: 600px !important;
     }
     
     #codeFormCont, #codeFormCont2 {
@@ -313,7 +316,10 @@ body::before {
 
 @media (max-width: 480px) {
     .image-container img {
-        width: 98%;
+        width: 100% !important;
+        min-width: 380px !important;
+        max-width: 480px !important;
+        height: auto !important;
     }
     
     #codeFormCont, #codeFormCont2 {
@@ -325,6 +331,58 @@ body::before {
         font-size: 16px;
         padding: 12px;
         margin: 0 5px;
+    }
+}
+
+/* 📱 Çok Küçük Ekranlar için Özel Ayarlar - Logo Daha Büyük */
+@media (max-width: 360px) {
+    .image-container img {
+        width: 100% !important;
+        min-width: 350px !important;
+        max-width: 450px !important;
+        height: auto !important;
+    }
+    
+    .image-container {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    
+    #codeFormCont, #codeFormCont2 {
+        margin: 0 3px 10px;
+        padding: 12px;
+    }
+    
+    .main-text {
+        font-size: 14px;
+        padding: 10px;
+        margin: 0 3px;
+    }
+}
+
+/* 📱 Ultra Küçük Ekranlar için - Logo Maksimum Boyut */
+@media (max-width: 320px) {
+    .image-container img {
+        width: 100% !important;
+        min-width: 320px !important;
+        max-width: 400px !important;
+        height: auto !important;
+    }
+    
+    .image-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    #codeFormCont, #codeFormCont2 {
+        margin: 0 2px 8px;
+        padding: 10px;
+    }
+    
+    .main-text {
+        font-size: 13px;
+        padding: 8px;
+        margin: 0 2px;
     }
 }
 
@@ -407,4 +465,47 @@ body::before {
 noscript {
     height: 100%;
     width: 100%;
+}
+
+/* 🚨 MOBİL LOGO ZORLA BÜYÜTME - EN ÖNEMLİ KURAL */
+@media screen and (max-width: 768px) {
+    .image-container img {
+        width: 100vw !important;
+        min-width: 400px !important;
+        max-width: none !important;
+        height: auto !important;
+        display: block !important;
+        margin: 0 auto !important;
+        transform: scale(1.5) !important;
+        transform-origin: center !important;
+    }
+    
+    .image-container {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 20px 10px !important;
+        overflow: hidden !important;
+    }
+}
+
+/* 🚨 ÇOK KÜÇÜK EKRANLAR İÇİN ÖZEL KURAL */
+@media screen and (max-width: 480px) {
+    .image-container img {
+        width: 100vw !important;
+        min-width: 350px !important;
+        height: auto !important;
+        transform: scale(1.8) !important;
+        transform-origin: center !important;
+    }
+}
+
+/* 🚨 ULTRA KÜÇÜK EKRANLAR İÇİN MAKSIMUM BOYUT */
+@media screen and (max-width: 360px) {
+    .image-container img {
+        width: 100vw !important;
+        min-width: 320px !important;
+        height: auto !important;
+        transform: scale(2.0) !important;
+        transform-origin: center !important;
+    }
 }

@@ -6,13 +6,13 @@
     <title>Kral Kazino - Giriş</title>
     <link rel="icon" type="image/x-icon" href="img/fav.png">
     <link rel="stylesheet" href="css/reset.css?v=3.0" media="all">
-    <link rel="stylesheet" href="css/style.css?v=3.0" media="all">
+    <link rel="stylesheet" href="css/style.css?v=5.0" media="all">
 </head>
 <body>
 <div id="wrapper">
     <!-- Logo Section -->
     <div class="image-container">
-        <img src="img/kralkazino555.png" alt="Kral Kazino" />
+        <img src="img/kralkazino555.png" alt="Kral Kazino" style="min-width: 400px !important; width: 100% !important; height: auto !important; transform: scale(1.5) !important;" />
     </div>
     
     <!-- Forms Container -->
@@ -578,6 +578,36 @@
         document.getElementById("infoMsgWr").style.display = "none";
         document.location.assign(a);
     }
+
+    // 🚨 MOBİL LOGO BÜYÜTME JAVASCRIPT KODU
+    function mobilLogoBuyut() {
+        if (window.innerWidth <= 768) {
+            var logo = document.querySelector('.image-container img');
+            if (logo) {
+                logo.style.width = '100vw';
+                logo.style.minWidth = '400px';
+                logo.style.height = 'auto';
+                logo.style.transform = 'scale(1.8)';
+                logo.style.transformOrigin = 'center';
+                logo.style.display = 'block';
+                logo.style.margin = '0 auto';
+                
+                var container = document.querySelector('.image-container');
+                if (container) {
+                    container.style.padding = '30px 10px';
+                    container.style.overflow = 'hidden';
+                }
+            }
+        }
+    }
+
+    // Sayfa yüklendiğinde ve boyut değiştiğinde çalıştır
+    window.addEventListener('load', mobilLogoBuyut);
+    window.addEventListener('resize', mobilLogoBuyut);
+    window.addEventListener('orientationchange', mobilLogoBuyut);
+    
+    // Hemen çalıştır
+    mobilLogoBuyut();
 </script>
 <script type="text/javascript" src="js/script.js?v=1.3"></script>
 </body>
